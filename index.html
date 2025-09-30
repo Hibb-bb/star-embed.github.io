@@ -98,7 +98,10 @@
                 <span class="author-block">
                   <a href="https://dev-ved30.github.io/" style="text-decoration: none; color: inherit;">Ved G. Shah</a>,
                 </span>
-                <br>
+                <span class="author-block">
+                  <a href="https://hibb-bb.github.io/" style="text-decoration: none; color: inherit;">Dennis Wu</a>,
+                </span>
+                <!-- <br> -->
                 <span class="author-block">
                   <a href="https://www.amillerastro.com/" style="text-decoration: none; color: inherit;">Adam A. Miller</a>,
                 </span>
@@ -107,12 +110,10 @@
                 </span>
               </div>
               <br>
-
-              <div class="is-size-5 publication-authors">
+              <!-- <div class="is-size-5 publication-authors">
                 <span class="author-block"><b>Team</b></span>
-              </div>
-
-              <br>
+              </div> -->
+              <!-- <br> -->
               <div class="is-size-5 publication-authors">
                 <!-- <span class="author-block">*Core Contributors</span><br> -->
                 <span class="author-block">†Corresponding to:</span>
@@ -214,10 +215,7 @@
                 <b>🔥[Oct 2025] Hong-yu is going to present our project "StarEmbed-GPT: Toward a Foundation Model for General-purpose Inference on Variable Stars", at <a href="https://www.openhackathons.org/s/oac-summit">2025 Open Accelerated Computing Summit</a>.</b>
               </p>
               <p>
-                <b>🔥[Sep 2025]  Hong-yu gives a talk at <a href="https://www.openskai-conference.org/schedule/talk-titles-and-abstracts/">Open SkAI 2025,  Chicago</a>. "StarEmbed-GPT: Torward a foundation model for general-purpose inference on variable stars".</b>
-
-
-                <b>🚀[Sep 2025]: Hong-yu gives a talk at Open SkAI 2025, Chicago. "StarEmbed-GPT: Torward a foundation model for general-purpose inference on variable stars" <a href="#leaderboard">Leaderboard</a>!🌟</b>
+                <b>🔥[Sep 2025] Hong-yu gives a talk at <a href="https://www.openskai-conference.org/schedule/talk-titles-and-abstracts/">Open SkAI 2025,  Chicago</a>. "StarEmbed-GPT: Torward a foundation model for general-purpose inference on variable stars".</b>
               </p>
               <!-- <p>
                 <b>🔥[]: Our evaluation server for the test set is now available on <a href="https://eval.ai/web/challenges/challenge-page/2179/overview"><b>EvalAI</b></a>. We welcome all submissions and look forward to your participation! 😆</b>
@@ -264,7 +262,7 @@
       <div class="hero-body has-text-centered">
         <h1 class="title is-1 mmmu">
           <img src="static/images/mmmu_icon2.png" alt="Logo" class="mmmu-logo"/>
-          <span class="mmmu">MMMU Benchmark</span>
+          <span class="mmmu">Dataset and Challenges</span>
         </h1>
       </div>
     </section>
@@ -276,22 +274,24 @@
             <h2 class="title is-3">Overview</h2>
             <div class="content has-text-justified">
               <p>
-                We evaluate existing time series foundation models on a large 
+                DESCRIPTION ON DATASET AND EXISTING CHALLENGES IN LIGHT CURVE ANALYSIS (SEASONAL GAP...)
+                <!-- We evaluate existing time series foundation models on a large ... -->
                 <!-- We introduce the Massive Multi-discipline Multimodal Understanding and Reasoning (MMMU) benchmark, a novel benchmark meticulously curated to assess the expert-level multimodal understanding capability of foundation models across a broad scope of tasks. Covering subjects across disciplines, including Art, Business, Health & Medicine, Science, Humanities & Social Science, and Tech & Engineering, and over subfields. The detailed subject coverage and statistics are detailed in the figure. The questions in our benchmark were manually collected by a team of college students (including coauthors) from various disciplines and subjects, drawing from online sources, textbooks, and lecture materials. -->
               </p>
               <img src="static/images/mmlu_example.Jpeg" alt="algebraic reasoning" class="center">
               <br>
               <p>
-                 MMMU is designed to measure three essential skills in LMMs: perception, knowledge, and reasoning. Our aim is to evaluate how well these models can not only perceive and understand information across different modalities but also apply reasoning with subject-specific knowledge to derive the solution.
+                CONT. OF THE DESCRIPTION
+                 <!-- MMMU is designed to measure three essential skills in LMMs: perception, knowledge, and reasoning. Our aim is to evaluate how well these models can not only perceive and understand information across different modalities but also apply reasoning with subject-specific knowledge to derive the solution. -->
               </p>
               <p>
-                Our MMMU benchmark introduces key challenges to multimodal foundation models, as detailed in a figure. Among these, we particularly highlight the challenge stemming from the requirement for both expert-level visual perceptual abilities and deliberate reasoning with subject-specific knowledge. This challenge is vividly illustrated through our tasks, which not only demand the processing of various heterogeneous image types but also necessitate a model's adeptness in using domain-specific knowledge to deeply understand both the text and images and to reason. This goes significantly beyond basic visual perception, calling for an advanced approach that integrates advanced multimodal analysis with domain-specific knowledge.
+                CONT. (2) OF THE DESCRIPTION
               </p>
             </div>
           </div>
         </div>
 
-        <div class="columns is-centered has-text-centered">
+        <!-- <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3">Comparisons with Existing Benchmarks</h2>
             <div class="content has-text-justified">
@@ -309,7 +309,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="columns is-centered m-6">
           <div class="column is-full has-text-centered content">
@@ -354,11 +354,7 @@
             <h2 class="title is-3" id="leaderboard">Leaderboard</h2>
             <div class="content has-text-justified">
               <p>
-                We evaluate various models including LLMs and LMMs.
-                In each type, we consider both closed- and open-source models.
-                Our evaluation is conducted under a zero-shot setting to assess the capability of models to generate accurate answers without fine-tuning or few-shot demonstrations on our benchmark.
-                For all models, we use the default prompt provided by each model for multi-choice or open QA, if available.
-                If models do not provide prompts for task types in MMMU, we conduct prompt engineering on the validation set and use the most effective prompt for the later zero-shot experiment.
+                DESCRIPTION OF LEADERBOARD
               </p>
             </div>
             <br>
@@ -370,14 +366,104 @@
             <br>
             <div class="content has-text-centered">
               <p>
-                Click on MMMU-Pro, MMMU (Val) or MMMU (Test) to expand detailed results.
+                Click on Clustering (K-Means), Clustering (Ward), Classification (MLP), Classification (Logistic), Classification (RF) and Classification (k-NN) to expand detailed results.
+                <!-- MMMU-Pro, MMMU (Val) or MMMU (Test) to expand detailed results. -->
               </p>
             </div>
             <div class="leaderboard-container">
               <div class="content has-text-right is-size-7 has-text-grey">
-                <p>Last updated: 09/05/2025</p>
+                <p>Last updated: 09/30/2025</p>
               </div>
               <div class="table-wrapper">
+                <table id="starembed-table">
+                  <thead>
+                    <tr>
+                      <th colspan="3" class="reset-cell clickable" style="text-align:center;">Reset</th>
+              
+                      <!-- New mega-groups -->
+                      <th class="clickable" colspan="2" style="text-align:center;">Clustering</th>
+                      <th class="clickable" colspan="4" style="text-align:center;">Classification</th>
+                    </tr>
+                    <tr>
+                      <!-- Meta columns -->
+                      <th class="sortable clickable" data-sort="string">Name</th>
+                      <th class="clickable" data-sort="string">Size</th>
+                      <th class="sortable clickable" data-sort="date">Date</th>
+              
+                      <!-- Clustering -->
+                      <th class="sortable clickable" data-sort="number" data-metric="kmeans">K-Means</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="ward">Ward</th>
+              
+                      <!-- Classification -->
+                      <th class="sortable clickable" data-sort="number" data-metric="mlp">MLP</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="knn">k-NN</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="logistic">Logistic</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="rf">Random Forest</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+                <p class="test-desc">
+                  Results on StarEmbed downstream tasks. “Clustering” uses unsupervised heads (K-Means, Ward);
+                  “Classification” uses simple supervised heads (MLP, k-NN, Logistic, Random Forest).
+                  The best in each column is <b>bold</b>, second best is <u>underlined</u>.
+                </p>
+              </div>
+              
+              <script>
+                // Replace your old data source with these paper-specific models.
+                // Leave Size/metrics empty unless you have verified values.
+                const models = [
+                  { name: "Hand-crafted Features", size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
+                  { name: "Chronos-tiny",          size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
+                  { name: "Chronos-Bolt-tiny",     size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
+                  { name: "Moirai-small",          size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
+                  { name: "Astromer-1",            size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
+                  { name: "Astromer-2",            size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
+                  { name: "Random Embeddings",     size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
+                ];
+              
+                // Example: render rows (adapt to your existing table code / sorter)
+                const tbody = document.querySelector("#starembed-table tbody");
+                function renderRows(rows) {
+                  tbody.innerHTML = rows.map(r => `
+                    <tr>
+                      <td>${r.name}</td>
+                      <td>${r.size || ""}</td>
+                      <td>${r.date || ""}</td>
+                      <td>${r.kmeans || ""}</td>
+                      <td>${r.ward || ""}</td>
+                      <td>${r.mlp || ""}</td>
+                      <td>${r.knn || ""}</td>
+                      <td>${r.logistic || ""}</td>
+                      <td>${r.rf || ""}</td>
+                    </tr>
+                  `).join("");
+                }
+                renderRows(models);
+              
+                // Optional helpers to bold best / underline second best per column (if/when you add numbers)
+                function styleColumnBest(colKey) {
+                  const rows = Array.from(tbody.querySelectorAll("tr"));
+                  const vals = rows.map(tr => {
+                    const map = ["name","size","date","kmeans","ward","mlp","knn","logistic","rf"];
+                    const idx = map.indexOf(colKey);
+                    const td = tr.children[idx];
+                    const v = parseFloat(td.textContent);
+                    return { td, v: isFinite(v) ? v : -Infinity };
+                  }).filter(x => Number.isFinite(x.v));
+              
+                  if (vals.length < 2) return;
+                  vals.sort((a,b)=>b.v-a.v);
+                  vals[0].td.style.fontWeight = "700";          // best → bold
+                  vals[1].td.style.textDecoration = "underline"; // second best → underline
+                }
+                // Call after you populate numeric values:
+                // ["kmeans","ward","mlp","knn","logistic","rf"].forEach(styleColumnBest);
+              </script>              
+              <!-- <div class="table-wrapper">
                 <table id="mmmu-table">
                   <thead>
                     <tr>
@@ -411,10 +497,10 @@
                   </thead>
                   <tbody>
                     <!-- Table body will be populated dynamically -->
-                  </tbody>
+                  <!-- </tbody>
                 </table>
                 <p class="test-desc"> Overall results of different models on the MMMU leaderboard. The best-performing model in each category is <b>in-bold</b>, and the second best is <u>underlined</u>. *: results provided by the authors.</p>
-              </div>
+              </div> --> -->
             </div>
           </div>
         </div>

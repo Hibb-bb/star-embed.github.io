@@ -20,6 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function loadTableData() {
       console.log('Starting to load table data...');
+
+      const MODEL_SLUGS = {
+        "Chronos-Tiny": "chronos",
+        "Chronos-Bolt": "chronos",
+        // "Moirai-Large": "moirai",
+        // "Astromer": "astromer"
+        // add more…
+      };
+
       fetch('./leaderboard_data.json')
         .then(response => {
           console.log('Response status:', response.status);

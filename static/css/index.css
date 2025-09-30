@@ -12,6 +12,9 @@ body {
   margin-bottom: 5px;
 }
 
+.model-link { text-decoration: none; font-weight: 600; }
+.model-link:hover { text-decoration: underline; }
+
 .mmmu-logo {
   width: 1em;
   vertical-align: middle;
