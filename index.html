@@ -463,6 +463,152 @@
                 // Call after you populate numeric values:
                 // ["kmeans","ward","mlp","knn","logistic","rf"].forEach(styleColumnBest);
               </script>              
+            <div class="table-wrapper">
+              <table id="starembed-table">
+                <thead>
+                  <!-- Row 1: mega-groups -->
+                  <tr>
+                    <th colspan="3" class="reset-cell clickable" style="text-align:center;">Reset</th>
+                    <th colspan="6" class="clickable" style="text-align:center;">Clustering</th>
+                    <th colspan="4" class="clickable" style="text-align:center;">Classification</th>
+                  </tr>
+
+                  <!-- Row 2: method groups under Clustering -->
+                  <tr>
+                    <!-- meta -->
+                    <th class="sortable clickable" data-sort="string">Name</th>
+                    <th class="clickable" data-sort="string">Size</th>
+                    <th class="sortable clickable" data-sort="date">Date</th>
+
+                    <!-- K-Means (3 metrics) -->
+                    <th colspan="3" style="text-align:center;">K-Means</th>
+                    <!-- Ward (3 metrics) -->
+                    <th colspan="3" style="text-align:center;">Ward</th>
+
+                    <!-- Classification heads -->
+                    <th class="sortable clickable" data-sort="number" data-metric="mlp">MLP</th>
+                    <th class="sortable clickable" data-sort="number" data-metric="knn">k-NN</th>
+                    <th class="sortable clickable" data-sort="number" data-metric="logistic">Logistic</th>
+                    <th class="sortable clickable" data-sort="number" data-metric="rf">Random Forest</th>
+                  </tr>
+
+                  <!-- Row 3: metric names -->
+                  <tr>
+                    <!-- meta -->
+                    <th class="hidden"></th>
+                    <th class="hidden"></th>
+                    <th class="hidden"></th>
+
+                    <!-- K-Means metrics -->
+                    <th class="sortable clickable" data-sort="number" data-metric="kmeans_nmi">NMI</th>
+                    <th class="sortable clickable" data-sort="number" data-metric="kmeans_ari">ARI</th>
+                    <th class="sortable clickable" data-sort="number" data-metric="kmeans_ami">F1</th>
+
+                    <!-- Ward metrics -->
+                    <th class="sortable clickable" data-sort="number" data-metric="ward_nmi">NMI</th>
+                    <th class="sortable clickable" data-sort="number" data-metric="ward_ari">ARI</th>
+                    <th class="sortable clickable" data-sort="number" data-metric="ward_ami">F1</th>
+
+                    <!-- Classification (no sub-metrics) -->
+                    <th class="hidden"></th>
+                    <th class="hidden"></th>
+                    <th class="hidden"></th>
+                    <th class="hidden"></th>
+                  </tr>
+                </thead>
+
+                <tbody></tbody>
+              </table>
+
+              <p class="test-desc">
+                Results on StarEmbed downstream tasks. Clustering uses K-Means and Ward with metrics (NMI, ARI, AMI).
+                Classification uses simple heads (MLP, k-NN, Logistic, Random Forest).
+                Best in each metric is <b>bold</b>, second best is <u>underlined</u>.
+              </p>
+            </div>
+            <script>
+              // ---- Data model (fill in your numbers when ready) ----
+              const models = [
+                { name: "Hand-crafted Features", size: "-", date: "-",
+                  kmeans_nmi:"26.19", kmeans_ari:"11.39", kmeans_ami:"40.28",
+                  ward_nmi:"25.08", ward_ari:"13.19", ward_ami:"33.23",
+                  mlp:"73.5", knn:"71.2", logistic:"71.4", rf:"80.7" },
+
+                { name: "Chronos-tiny", size: "8M", date: "[03-2024]",
+                  kmeans_nmi:"24.32", kmeans_ari:"15.9", kmeans_ami:"34.1",
+                  ward_nmi:"18.9", ward_ari:"12.17", ward_ami:"36.71",
+                  mlp:"64.5", knn:"67.2", logistic:"61.7", rf:"64.0" },
+
+                { name: "Chronos-Bolt-tiny", size: "9M", date: "[12-2024]",
+                  kmeans_nmi:"21.34", kmeans_ari:"12.45", kmeans_ami:"31.36",
+                  ward_nmi:"22.73", ward_ari:"15.53", ward_ami:"36.62",
+                  mlp:"61.2", knn:"57.0", logistic:"58.0", rf:"58.2" },
+
+                { name: "Moirai-small", size: "14M", date: "[02-2024]",
+                  kmeans_nmi:"17.24", kmeans_ari:"9.78", kmeans_ami:"28.16",
+                  ward_nmi:"14.76", ward_ari:"8.28", ward_ami:"26.12",
+                  mlp:"59.2", knn:"55.4", logistic:"57.9", rf:"55.4" },
+
+                { name: "Astromer-1", size: "0.66M", date: "[05-2022]",
+                  kmeans_nmi:"0.41", kmeans_ari:"0.22", kmeans_ami:"16.59",
+                  ward_nmi:"0.41", ward_ari:"0.01", ward_ami:"16.52",
+                  mlp:"13.4", knn:"12.2", logistic:"7.2", rf:"11.5" },
+
+                { name: "Astromer-2", size: "5.4M", date: "[02-2025]",
+                  kmeans_nmi:"0.76", kmeans_ari:"1.43", kmeans_ami:"15.71",
+                  ward_nmi:"", ward_ari:"", ward_ami:"",
+                  mlp:"38.8", knn:"53.7", logistic:"52.1", rf:"58.0" },
+
+                { name: "Random Embeddings", size: "-", date: "-",
+                  kmeans_nmi:"0.03", kmeans_ari:"0.0", kmeans_ami:"9.71",
+                  ward_nmi:"0.03", ward_ari:"0.04", ward_ami:"11.2",
+                  mlp:"9.6", knn:"12.0", logistic:"7.6", rf:"11.5" },
+              ];
+
+              // Column order map (to render cells easily)
+              const COLS = [
+                "name","size","date",
+                "kmeans_nmi","kmeans_ari","kmeans_ami",
+                "ward_nmi","ward_ari","ward_ami",
+                "mlp","knn","logistic","rf"
+              ];
+
+              // ---- Render ----
+              const tbody = document.querySelector("#starembed-table tbody");
+              function renderRows(rows) {
+                tbody.innerHTML = rows.map(r => `
+                  <tr>
+                    ${COLS.map(key => `<td data-key="${key}">${r[key] ?? ""}</td>`).join("")}
+                  </tr>
+                `).join("");
+              }
+              renderRows(models);
+
+              // ---- Best/second-best styling for numeric columns ----
+              function styleBestSecond(colKey) {
+                const idx = COLS.indexOf(colKey);
+                if (idx < 0) return;
+                const rows = Array.from(tbody.querySelectorAll("tr"));
+                const vals = rows.map(tr => {
+                  const td = tr.children[idx];
+                  const v = parseFloat(td.textContent);
+                  return { td, v: Number.isFinite(v) ? v : -Infinity };
+                }).filter(x => Number.isFinite(x.v));
+                if (vals.length < 2) return;
+                vals.sort((a,b) => b.v - a.v);
+                vals[0].td.style.fontWeight = "700";           // best
+                vals[1].td.style.textDecoration = "underline"; // second
+              }
+
+              // Call this after you populate real numbers:
+              const METRIC_KEYS = [
+                "kmeans_nmi","kmeans_ari","kmeans_ami",
+                "ward_nmi","ward_ari","ward_ami",
+                "mlp","knn","logistic","rf"
+              ];
+              // METRIC_KEYS.forEach(styleBestSecond);
+            </script>
+
               <!-- <div class="table-wrapper">
                 <table id="mmmu-table">
                   <thead>
