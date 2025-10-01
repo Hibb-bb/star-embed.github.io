@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Chronos-Tiny — Star-Embed Model Card</title>
+    <title>Chronos-Bolt-Tiny — Star-Embed Model Card</title>
 
     <!-- IMPORTANT: use correct relative paths, we're one level deeper -->
     <link rel="icon" href="../../static/images/star_logos/milky2.jpg">
@@ -58,9 +58,9 @@
       <div class="container is-max-desktop content">
         <!-- Model Header -->
         <div class="model-header">
-          <h1 class="title is-1 has-text-white">Chronos-Tiny</h1>
-          <p class="subtitle is-4 has-text-white">Time Series Forecasting Model</p>
-          <p class="is-size-6 has-text-white">Published: March 2024</p>
+          <h1 class="title is-1 has-text-white">Chronos-Bolt-Tiny</h1>
+          <p class="subtitle is-4 has-text-white">Ultra-Fast Time Series Model</p>
+          <p class="is-size-6 has-text-white">Published: 2024</p>
         </div>
 
         <!-- Model Information Cards -->
@@ -68,7 +68,7 @@
           <div class="column is-half">
             <div class="model-info-card">
               <h3 class="title is-5">📄 Paper</h3>
-              <p><a href="https://arxiv.org/abs/2403.07815" target="_blank" class="link-button">View Paper</a></p>
+              <p><a href="https://aws.amazon.com/blogs/machine-learning/fast-and-accurate-zero-shot-forecasting-with-chronos-bolt-and-autogluon/" target="_blank" class="link-button">View Paper</a></p>
             </div>
           </div>
           <div class="column is-half">
@@ -82,31 +82,30 @@
         <!-- Model Architecture -->
         <div class="model-info-card">
           <h3 class="title is-5">🏗️ Model Architecture</h3>
-          <p>Chronos-Tiny is a compact 8M parameter time series forecasting model based on the T5 transformer architecture. It uses a sequence-to-sequence approach where the input is a time series and the output is a forecast. The model is specifically designed for efficient time series analysis with:</p>
+          <p>Chronos-Bolt-Tiny is an ultra-compact and fast variant of the Chronos model family, optimized for real-time time series forecasting. It provides excellent performance while maintaining minimal computational requirements:</p>
           <ul>
-            <li><strong>Architecture:</strong> T5-based transformer</li>
-            <li><strong>Parameters:</strong> 8M</li>
+            <li><strong>Architecture:</strong> T5-based transformer (optimized)</li>
+            <li><strong>Parameters:</strong> ~2M (ultra-compact)</li>
+            <li><strong>Speed:</strong> Optimized for real-time inference</li>
             <li><strong>Input:</strong> Time series sequences</li>
-            <li><strong>Output:</strong> Future time series predictions</li>
-            <li><strong>Training:</strong> Pre-trained on large-scale time series data</li>
+            <li><strong>Output:</strong> Fast time series predictions</li>
+            <li><strong>Specialization:</strong> High-speed forecasting</li>
           </ul>
         </div>
 
         <!-- UMAP Visualization -->
         <div class="umap-container">
           <h3 class="title is-5">🎯 Embedding Clustering Visualization</h3>
-          <img src="../../static/images/umap/Chronos_umap.png" alt="Chronos-Tiny UMAP Visualization" style="max-width: 100%; height: auto; border-radius: 8px;">
+          <img src="../../static/images/umap/ChronosBolt.png" alt="Chronos-Bolt-Tiny UMAP Visualization" style="max-width: 100%; height: auto; border-radius: 8px;">
           <img src="../../static/images/umap/legend.png" alt="UMAP Legend" style="max-width: 60%; height: auto; border-radius: 8px; margin-top: 1rem;">
-          <p class="is-size-7 has-text-grey mt-2">UMAP visualization of Chronos-Tiny embeddings showing clustering patterns in astronomical time series data</p>
+          <p class="is-size-7 has-text-grey mt-2">UMAP visualization of Chronos-Bolt-Tiny embeddings showing excellent clustering patterns in astronomical time series data</p>
         </div>
-
-
 
         <!-- Additional Links -->
         <div class="model-info-card">
           <h3 class="title is-5">🔗 Additional Resources</h3>
           <p>
-            <a href="https://huggingface.co/amazon/chronos-t5-tiny" target="_blank" class="link-button">Hugging Face Model</a>
+            <a href="https://huggingface.co/amazon/chronos-t5-bolt-tiny" target="_blank" class="link-button">Hugging Face Model</a>
             <a href="../../" target="_blank" class="link-button">Project Home</a>
           </p>
         </div>

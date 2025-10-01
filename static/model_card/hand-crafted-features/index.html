@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Chronos-Tiny — Star-Embed Model Card</title>
+    <title>Hand-crafted Features — Star-Embed Model Card</title>
 
     <!-- IMPORTANT: use correct relative paths, we're one level deeper -->
     <link rel="icon" href="../../static/images/star_logos/milky2.jpg">
@@ -58,9 +58,9 @@
       <div class="container is-max-desktop content">
         <!-- Model Header -->
         <div class="model-header">
-          <h1 class="title is-1 has-text-white">Chronos-Tiny</h1>
-          <p class="subtitle is-4 has-text-white">Time Series Forecasting Model</p>
-          <p class="is-size-6 has-text-white">Published: March 2024</p>
+          <h1 class="title is-1 has-text-white">Hand-crafted Features</h1>
+          <p class="subtitle is-4 has-text-white">Traditional Feature Engineering</p>
+          <p class="is-size-6 has-text-white">Published: N/A (Traditional Method)</p>
         </div>
 
         <!-- Model Information Cards -->
@@ -68,13 +68,13 @@
           <div class="column is-half">
             <div class="model-info-card">
               <h3 class="title is-5">📄 Paper</h3>
-              <p><a href="https://arxiv.org/abs/2403.07815" target="_blank" class="link-button">View Paper</a></p>
+              <p><a href="https://arxiv.org/abs/1201.0745" target="_blank" class="link-button">Feature Engineering Survey</a></p>
             </div>
           </div>
           <div class="column is-half">
             <div class="model-info-card">
               <h3 class="title is-5">💻 GitHub</h3>
-              <p><a href="https://github.com/amazon-science/chronos-forecasting" target="_blank" class="link-button">View Repository</a></p>
+              <p><a href="../../" target="_blank" class="link-button">Project Repository</a></p>
             </div>
           </div>
         </div>
@@ -82,32 +82,31 @@
         <!-- Model Architecture -->
         <div class="model-info-card">
           <h3 class="title is-5">🏗️ Model Architecture</h3>
-          <p>Chronos-Tiny is a compact 8M parameter time series forecasting model based on the T5 transformer architecture. It uses a sequence-to-sequence approach where the input is a time series and the output is a forecast. The model is specifically designed for efficient time series analysis with:</p>
+          <p>Hand-crafted features represent traditional feature engineering approaches for time series analysis. These features are manually designed based on domain knowledge and statistical properties of astronomical time series data:</p>
           <ul>
-            <li><strong>Architecture:</strong> T5-based transformer</li>
-            <li><strong>Parameters:</strong> 8M</li>
-            <li><strong>Input:</strong> Time series sequences</li>
-            <li><strong>Output:</strong> Future time series predictions</li>
-            <li><strong>Training:</strong> Pre-trained on large-scale time series data</li>
+            <li><strong>Approach:</strong> Manual feature engineering</li>
+            <li><strong>Features:</strong> Statistical, frequency, and temporal features</li>
+            <li><strong>Domain Knowledge:</strong> Astronomy-specific characteristics</li>
+            <li><strong>Input:</strong> Raw time series data</li>
+            <li><strong>Output:</strong> Engineered feature vectors</li>
+            <li><strong>Features Include:</strong> Mean, std, skewness, kurtosis, periodicity, etc.</li>
           </ul>
         </div>
 
         <!-- UMAP Visualization -->
         <div class="umap-container">
           <h3 class="title is-5">🎯 Embedding Clustering Visualization</h3>
-          <img src="../../static/images/umap/Chronos_umap.png" alt="Chronos-Tiny UMAP Visualization" style="max-width: 100%; height: auto; border-radius: 8px;">
+          <img src="../../static/images/umap/Hand%20Crafted_umap.png" alt="Hand-crafted Features UMAP Visualization" style="max-width: 100%; height: auto; border-radius: 8px;">
           <img src="../../static/images/umap/legend.png" alt="UMAP Legend" style="max-width: 60%; height: auto; border-radius: 8px; margin-top: 1rem;">
-          <p class="is-size-7 has-text-grey mt-2">UMAP visualization of Chronos-Tiny embeddings showing clustering patterns in astronomical time series data</p>
+          <p class="is-size-7 has-text-grey mt-2">UMAP visualization of hand-crafted features showing moderate clustering patterns in astronomical time series data</p>
         </div>
-
-
 
         <!-- Additional Links -->
         <div class="model-info-card">
           <h3 class="title is-5">🔗 Additional Resources</h3>
           <p>
-            <a href="https://huggingface.co/amazon/chronos-t5-tiny" target="_blank" class="link-button">Hugging Face Model</a>
             <a href="../../" target="_blank" class="link-button">Project Home</a>
+            <a href="../../#leaderboard" target="_blank" class="link-button">View Leaderboard</a>
           </p>
         </div>
       </div>

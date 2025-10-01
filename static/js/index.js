@@ -19,15 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function loadTableData() {
-      console.log('Starting to load table data...');
-
-      const MODEL_SLUGS = {
-        "Chronos-Tiny": "chronos",
-        "Chronos-Bolt": "chronos",
-        // "Moirai-Large": "moirai",
-        // "Astromer": "astromer"
-        // add more…
-      };
+      console.log('Starting to load StarEmbed table data...');
 
       fetch('./leaderboard_data.json')
         .then(response => {
@@ -38,89 +30,199 @@ function loadTableData() {
           return response.json();
         })
         .then(data => {
-          console.log('Data loaded successfully:', data);
-          const tbody = document.querySelector('#mmmu-table tbody');
-
-          // Prepare data for styling
-          const proScores = prepareScoresForStyling(data.leaderboardData, 'pro');
-          const valScores = prepareScoresForStyling(data.leaderboardData, 'validation');
-          const testScores = prepareScoresForStyling(data.leaderboardData, 'test');
-
-          data.leaderboardData.forEach((row, index) => {
-            const tr = document.createElement('tr');
-            tr.classList.add(row.info.type);
-            const nameCell = row.info.link && row.info.link.trim() !== '' ?
-              `<a href="${row.info.link}" target="_blank"><b>${row.info.name}</b></a>` :
-              `<b>${row.info.name}</b>`;
-            const safeGet = (obj, path, defaultValue = '-') => {
-              return path.split('.').reduce((acc, part) => acc && acc[part], obj) || defaultValue;
-            };
-
-            // Helper function to format the overall value
-            const formatOverallValue = (value, source) => {
-              // Adjust space in front of asterisk to align values
-              const adjustedValue = source === 'author' ? `&nbsp;${value || '-'}*` : `${value || '-'}`;
-              return adjustedValue;
-            };
-
-            const proOverall = formatOverallValue(applyStyle(safeGet(row, 'pro.overall'), proScores.overall[index]), safeGet(row, 'pro.source'));
-            const valOverall = formatOverallValue(applyStyle(safeGet(row, 'validation.overall'), valScores.overall[index]), safeGet(row, 'validation.source'));
-            const testOverall = formatOverallValue(applyStyle(safeGet(row, 'test.overall'), testScores.overall[index]), safeGet(row, 'test.source'));
-
-            tr.innerHTML = `
-              <td>${nameCell}</td>
-              <td>${row.info.size}</td>
-              <td>${row.info.date}</td>
-              <td class="pro-overall">${proOverall}</td>
-              <td class="hidden pro-details">${applyStyle(safeGet(row, 'pro.vision'), proScores.vision[index])}</td>
-              <td class="hidden pro-details">${applyStyle(safeGet(row, 'pro.original'), proScores.original[index])}</td>
-              <td class="val-overall">${valOverall}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.artDesign'), valScores.artDesign[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.business'), valScores.business[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.science'), valScores.science[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.healthMedicine'), valScores.healthMedicine[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.humanSocialSci'), valScores.humanSocialSci[index])}</td>
-              <td class="hidden val-details">${applyStyle(safeGet(row, 'validation.techEng'), valScores.techEng[index])}</td>
-              <td class="test-overall">${testOverall}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.artDesign'), testScores.artDesign[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.business'), testScores.business[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.science'), testScores.science[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.healthMedicine'), testScores.healthMedicine[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.humanSocialSci'), testScores.humanSocialSci[index])}</td>
-              <td class="hidden test-details">${applyStyle(safeGet(row, 'test.techEng'), testScores.techEng[index])}</td>
-            `;
-            tbody.appendChild(tr);
-          });
-          setTimeout(adjustNameColumnWidth, 0);
+          console.log('StarEmbed data loaded successfully:', data);
+          
+          // Load both tables
+          loadClusteringTable(data.leaderboardData);
+          loadClassificationTable(data.leaderboardData);
+          
+          // Initialize sorting and adjust column widths
           initializeSorting();
+          adjustNameColumnWidth();
         })
         .catch(error => {
-          console.error('Error loading table data:', error);
-          document.querySelector('#mmmu-table tbody').innerHTML = `
-            <tr>
-                <td colspan="21"> Error loading data: ${error.message}<br> Please ensure you're accessing this page through a web server (http://localhost:8000) and not directly from the file system. </td>
-            </tr>
-          `;
+          console.error('Error loading StarEmbed data:', error);
+          const clusteringTbody = document.querySelector('#clustering-table tbody');
+          const classificationTbody = document.querySelector('#classification-table tbody');
+          
+          if (clusteringTbody) {
+            clusteringTbody.innerHTML = `
+              <tr>
+                <td colspan="9">Error loading data: ${error.message}</td>
+              </tr>
+            `;
+          }
+          
+          if (classificationTbody) {
+            classificationTbody.innerHTML = `
+              <tr>
+                <td colspan="19">Error loading data: ${error.message}</td>
+              </tr>
+            `;
+          }
         });
   }
 
+  function loadClusteringTable(models) {
+    const tbody = document.querySelector('#clustering-table tbody');
+    if (!tbody) return;
+
+    // Prepare data for styling
+    const clusteringScores = prepareClusteringScores(models);
+
+    tbody.innerHTML = models.map((model, index) => {
+      const nameCell = getModelNameCell(model);
+
+      return `
+        <tr class="${model.info.type}">
+          <td>${nameCell}</td>
+          <td>${model.info.size || '-'}</td>
+          <td>${model.info.date || '-'}</td>
+          <td>${applyStyle(model.clustering.kmeans.nmi, clusteringScores.kmeans_nmi[index])}</td>
+          <td>${applyStyle(model.clustering.kmeans.ari, clusteringScores.kmeans_ari[index])}</td>
+          <td>${applyStyle(model.clustering.kmeans.f1, clusteringScores.kmeans_f1[index])}</td>
+          <td>${applyStyle(model.clustering.ward.nmi, clusteringScores.ward_nmi[index])}</td>
+          <td>${applyStyle(model.clustering.ward.ari, clusteringScores.ward_ari[index])}</td>
+          <td>${applyStyle(model.clustering.ward.f1, clusteringScores.ward_f1[index])}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function loadClassificationTable(models) {
+    const tbody = document.querySelector('#classification-table tbody');
+    if (!tbody) return;
+
+    // Prepare data for styling
+    const classificationScores = prepareClassificationScores(models);
+
+    tbody.innerHTML = models.map((model, index) => {
+      const nameCell = getModelNameCell(model);
+
+      return `
+        <tr class="${model.info.type}">
+          <td>${nameCell}</td>
+          <td>${model.info.size || '-'}</td>
+          <td>${model.info.date || '-'}</td>
+          <td>${applyStyle(model.classification.mlp.accuracy, classificationScores.mlp_accuracy[index])}</td>
+          <td>${applyStyle(model.classification.mlp.recall, classificationScores.mlp_recall[index])}</td>
+          <td>${applyStyle(model.classification.mlp.precision, classificationScores.mlp_precision[index])}</td>
+          <td>${applyStyle(model.classification.mlp.f1, classificationScores.mlp_f1[index])}</td>
+          <td>${applyStyle(model.classification.knn.accuracy, classificationScores.knn_accuracy[index])}</td>
+          <td>${applyStyle(model.classification.knn.recall, classificationScores.knn_recall[index])}</td>
+          <td>${applyStyle(model.classification.knn.precision, classificationScores.knn_precision[index])}</td>
+          <td>${applyStyle(model.classification.knn.f1, classificationScores.knn_f1[index])}</td>
+          <td>${applyStyle(model.classification.logistic.accuracy, classificationScores.logistic_accuracy[index])}</td>
+          <td>${applyStyle(model.classification.logistic.recall, classificationScores.logistic_recall[index])}</td>
+          <td>${applyStyle(model.classification.logistic.precision, classificationScores.logistic_precision[index])}</td>
+          <td>${applyStyle(model.classification.logistic.f1, classificationScores.logistic_f1[index])}</td>
+          <td>${applyStyle(model.classification.rf.accuracy, classificationScores.rf_accuracy[index])}</td>
+          <td>${applyStyle(model.classification.rf.recall, classificationScores.rf_recall[index])}</td>
+          <td>${applyStyle(model.classification.rf.precision, classificationScores.rf_precision[index])}</td>
+          <td>${applyStyle(model.classification.rf.f1, classificationScores.rf_f1[index])}</td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  function prepareClusteringScores(data) {
+    const scores = {};
+    const metrics = ['kmeans_nmi', 'kmeans_ari', 'kmeans_f1', 'ward_nmi', 'ward_ari', 'ward_f1'];
+    
+    metrics.forEach(metric => {
+      const [method, metricName] = metric.split('_');
+      const values = data.map(row => {
+        const value = row.clustering[method][metricName];
+        return value === '' ? null : parseFloat(value);
+      }).filter(v => v !== null);
+      
+      if (values.length > 0) {
+        const sortedValues = [...new Set(values)].sort((a, b) => b - a);
+        scores[metric] = data.map(row => {
+          const value = row.clustering[method][metricName];
+          if (value === '' || value === null) return -1;
+          return sortedValues.indexOf(parseFloat(value));
+        });
+      } else {
+        scores[metric] = data.map(() => -1);
+      }
+    });
+    
+    return scores;
+  }
+
+  function prepareClassificationScores(data) {
+    const scores = {};
+    const metrics = ['mlp_accuracy', 'mlp_recall', 'mlp_precision', 'mlp_f1', 
+                   'knn_accuracy', 'knn_recall', 'knn_precision', 'knn_f1',
+                   'logistic_accuracy', 'logistic_recall', 'logistic_precision', 'logistic_f1',
+                   'rf_accuracy', 'rf_recall', 'rf_precision', 'rf_f1'];
+    
+    metrics.forEach(metric => {
+      const [method, metricName] = metric.split('_');
+      const values = data.map(row => {
+        const value = row.classification[method][metricName];
+        return value === '' ? null : parseFloat(value);
+      }).filter(v => v !== null);
+      
+      if (values.length > 0) {
+        const sortedValues = [...new Set(values)].sort((a, b) => b - a);
+        scores[metric] = data.map(row => {
+          const value = row.classification[method][metricName];
+          if (value === '' || value === null) return -1;
+          return sortedValues.indexOf(parseFloat(value));
+        });
+      } else {
+        scores[metric] = data.map(() => -1);
+      }
+    });
+    
+    return scores;
+  }
+
+  function getModelNameCell(model) {
+    // Map model names to their corresponding model card paths
+    const modelCardMap = {
+      'Hand-crafted Features': 'static/model_card/hand-crafted-features/',
+      'Chronos-tiny': 'static/model_card/chronos/',
+      'Chronos-Bolt-tiny': 'static/model_card/chronos-bolt-tiny/',
+      'Moirai-small': 'static/model_card/moirai-small/',
+      'Astromer-1': 'static/model_card/astromer-1/',
+      'Astromer-2': 'static/model_card/astromer-2/',
+      'Random Embeddings': 'static/model_card/random-embeddings/'
+    };
+
+    const modelCardPath = modelCardMap[model.info.name];
+    
+    if (modelCardPath) {
+      return `<a href="${modelCardPath}" target="_blank"><b>${model.info.name}</b></a>`;
+    } else {
+      // Fallback to original link if available, otherwise just bold text
+      return model.info.link && model.info.link.trim() !== '' ?
+        `<a href="${model.info.link}" target="_blank"><b>${model.info.name}</b></a>` :
+        `<b>${model.info.name}</b>`;
+    }
+  }
+
 function setupEventListeners() {
-  document.querySelector('.reset-cell').addEventListener('click', function() {
-    resetTable();
+  // Reset button functionality for both tables
+  document.querySelectorAll('.reset-cell').forEach(resetCell => {
+    resetCell.addEventListener('click', function() {
+      resetTable();
+    });
   });
 
-  document.querySelector('.pro-details-cell').addEventListener('click', function() {
-    toggleDetails('pro');
-  });
-  document.querySelector('.val-details-cell').addEventListener('click', function() {
-    toggleDetails('val');
-  });
-  document.querySelector('.test-details-cell').addEventListener('click', function() {
-    toggleDetails('test');
+  // Sorting functionality for clustering table
+  var clusteringHeaders = document.querySelectorAll('#clustering-table thead tr:last-child th.sortable');
+  clusteringHeaders.forEach(function(header) {
+    header.addEventListener('click', function() {
+      sortTable(this);
+    });
   });
 
-  var headers = document.querySelectorAll('#mmmu-table thead tr:last-child th.sortable');
-  headers.forEach(function(header) {
+  // Sorting functionality for classification table
+  var classificationHeaders = document.querySelectorAll('#classification-table thead tr:last-child th.sortable');
+  classificationHeaders.forEach(function(header) {
     header.addEventListener('click', function() {
       sortTable(this);
     });
@@ -147,26 +249,22 @@ function toggleDetails(section) {
 }
 
 function resetTable() {
-  document.querySelectorAll('.pro-details, .val-details, .test-details').forEach(function(cell) {
-    cell.classList.add('hidden');
-  });
-
-  document.querySelectorAll('.pro-overall, .val-overall, .test-overall').forEach(function(cell) {
-    cell.classList.remove('hidden');
-  });
-
-  document.querySelector('.pro-details-cell').setAttribute('colspan', '1');
-  document.querySelector('.val-details-cell').setAttribute('colspan', '1');
-  document.querySelector('.test-details-cell').setAttribute('colspan', '1');
-
-  var valOverallHeader = document.querySelector('#mmmu-table thead tr:last-child th.val-overall');
-  sortTable(valOverallHeader, true);
+  // Reset sorting to default for both tables
+  var kmeansNmiHeader = document.querySelector('#clustering-table thead tr:last-child th[data-metric="kmeans_nmi"]');
+  if (kmeansNmiHeader) {
+    sortTable(kmeansNmiHeader, true);
+  }
+  
+  var mlpF1Header = document.querySelector('#classification-table thead tr:last-child th[data-metric="mlp_f1"]');
+  if (mlpF1Header) {
+    sortTable(mlpF1Header, true);
+  }
 
   setTimeout(adjustNameColumnWidth, 0);
 }
 
 function sortTable(header, forceDescending = false, maintainOrder = false) {
-  var table = document.getElementById('mmmu-table');
+  var table = header.closest('table');
   var tbody = table.querySelector('tbody');
   var rows = Array.from(tbody.querySelectorAll('tr'));
   var headers = Array.from(header.parentNode.children);
@@ -223,12 +321,19 @@ function getCellValue(row, index) {
 }
 
 function initializeSorting() {
-  var valOverallHeader = document.querySelector('#mmmu-table thead tr:last-child th.val-overall');
-  sortTable(valOverallHeader, true);
+  var kmeansNmiHeader = document.querySelector('#clustering-table thead tr:last-child th[data-metric="kmeans_nmi"]');
+  if (kmeansNmiHeader) {
+    sortTable(kmeansNmiHeader, true);
+  }
+  
+  var mlpF1Header = document.querySelector('#classification-table thead tr:last-child th[data-metric="mlp_f1"]');
+  if (mlpF1Header) {
+    sortTable(mlpF1Header, true);
+  }
 }
 
 function adjustNameColumnWidth() {
-  const nameColumn = document.querySelectorAll('#mmmu-table td:first-child, #mmmu-table th:first-child');
+  const nameColumn = document.querySelectorAll('#clustering-table td:first-child, #clustering-table th:first-child, #classification-table td:first-child, #classification-table th:first-child');
   let maxWidth = 0;
 
   const span = document.createElement('span');

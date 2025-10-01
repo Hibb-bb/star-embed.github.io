@@ -2,6 +2,119 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+/* Table column group background colors for StarEmbed tables */
+
+/* Clustering Table - Reset group (Name, Size, Date) */
+#clustering-table th:nth-child(1),
+#clustering-table th:nth-child(2),
+#clustering-table th:nth-child(3),
+#clustering-table td:nth-child(1),
+#clustering-table td:nth-child(2),
+#clustering-table td:nth-child(3) {
+  background-color: #f8f9fa;
+}
+
+/* Clustering Table - K-Means group */
+#clustering-table th:nth-child(4),
+#clustering-table th:nth-child(5),
+#clustering-table th:nth-child(6),
+#clustering-table td:nth-child(4),
+#clustering-table td:nth-child(5),
+#clustering-table td:nth-child(6) {
+  background-color: #e3f2fd;
+}
+
+/* Clustering Table - Ward group */
+#clustering-table th:nth-child(7),
+#clustering-table th:nth-child(8),
+#clustering-table th:nth-child(9),
+#clustering-table td:nth-child(7),
+#clustering-table td:nth-child(8),
+#clustering-table td:nth-child(9) {
+  background-color: #f3e5f5;
+}
+
+/* Classification Table - Reset group (Name, Size, Date) */
+#classification-table th:nth-child(1),
+#classification-table th:nth-child(2),
+#classification-table th:nth-child(3),
+#classification-table td:nth-child(1),
+#classification-table td:nth-child(2),
+#classification-table td:nth-child(3) {
+  background-color: #f8f9fa;
+}
+
+/* Classification Table - MLP group */
+#classification-table th:nth-child(4),
+#classification-table th:nth-child(5),
+#classification-table th:nth-child(6),
+#classification-table th:nth-child(7),
+#classification-table td:nth-child(4),
+#classification-table td:nth-child(5),
+#classification-table td:nth-child(6),
+#classification-table td:nth-child(7) {
+  background-color: #e8f5e8;
+}
+
+/* Classification Table - k-NN group */
+#classification-table th:nth-child(8),
+#classification-table th:nth-child(9),
+#classification-table th:nth-child(10),
+#classification-table th:nth-child(11),
+#classification-table td:nth-child(8),
+#classification-table td:nth-child(9),
+#classification-table td:nth-child(10),
+#classification-table td:nth-child(11) {
+  background-color: #fff3e0;
+}
+
+/* Classification Table - Logistic group headers (both rows) */
+#classification-table thead tr:nth-child(2) th:nth-child(12),
+#classification-table thead tr:nth-child(2) th:nth-child(13),
+#classification-table thead tr:nth-child(2) th:nth-child(14),
+#classification-table thead tr:nth-child(2) th:nth-child(15) {
+  background-color: #fce4ec;
+}
+
+/* Classification Table - Random Forest group headers (both rows) */
+
+#classification-table thead tr:first-child th:nth-child(5),
+#classification-table thead tr:first-child th:nth-child(4) {
+  background-color: #f8f9fa;
+}
+
+
+#classification-table thead tr:nth-child(2) th:nth-child(16),
+#classification-table thead tr:nth-child(2) th:nth-child(17),
+#classification-table thead tr:nth-child(2) th:nth-child(18),
+#classification-table thead tr:nth-child(2) th:nth-child(19) {
+  background-color: #e0f2f1;
+}
+
+/* Classification Table - Logistic group data rows */
+#classification-table td:nth-child(12),
+#classification-table td:nth-child(13),
+#classification-table td:nth-child(14),
+#classification-table td:nth-child(15),
+#classification-table td:nth-child(12),
+#classification-table td:nth-child(13),
+#classification-table td:nth-child(14),
+#classification-table td:nth-child(15) {
+  background-color: #fce4ec;
+}
+
+/* Classification Table - Random Forest group data rows */
+#classification-table td:nth-child(16),
+#classification-table td:nth-child(17),
+#classification-table td:nth-child(18),
+#classification-table td:nth-child(19),
+#classification-table td:nth-child(16),
+#classification-table td:nth-child(17),
+#classification-table td:nth-child(18),
+#classification-table td:nth-child(19) {
+  background-color: #e0f2f1;
+}
+
 .footer .icon-link {
   font-size: 25px;
   color: #000;
@@ -40,6 +153,15 @@ body {
 .random_frequent {
   background-color: #f4f9fe;
   color: #808080;
+}
+
+/* StarEmbed model type colors */
+.tsfm {
+  background-color: rgba(33, 150, 243, 0.1);
+}
+
+.baseline {
+  background-color: rgba(158, 158, 158, 0.1);
 }
 
 .teaser .hero-body {

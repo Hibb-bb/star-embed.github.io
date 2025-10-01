@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Star-Embed: Benchmarking Time Series Foundation Models on Astronomical Observations of Variable Starts</title>
 
-    <link rel="icon" href="./static/images/mmmu_icon2.png"> 
+    <link rel="icon" href="./static/images/star_logos/milky2.jpg"> 
 
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
 
@@ -76,7 +76,7 @@
           <div class="columns is-centered">
             <div class="column has-text-centered">
               <h1 class="title is-1 publication-title is-bold">
-                <img src="static/images/mmmu_icon2.png" style="width:1em;vertical-align: middle" alt="Logo"/>
+                <img src="static/images/star_logos/milky2.jpg" style="width:1em;vertical-align: middle" alt="Logo"/>
                 <span class="mmmu" style="vertical-align: middle">Star-Embed</span>
               </h1>
               <h2 class="subtitle is-3 publication-subtitle">
@@ -194,12 +194,18 @@
 
     <section class="hero teaser">
       <div class="container is-max-desktop has-text-centered">
-        <img src="static/images/overview_mmlu.Jpeg" alt="geometric reasoning">
+        <img src="static/images/star-embed/institutions.jpg" alt="geometric reasoning">
+        This project is supported by the 
+        <a href="https://skai-institute.org/">SkAI Institute</a>,
+        <a href="https://genai.northwestern.edu/index.html">CMFG</a>
+        , and
+        <a href="https://ciera.northwestern.edu/">CIERA at Northwestern University.
+        </a>
+        <br>
         <p>Overview of the StarEmbed Benchmark. StarEmbed presents the following evaluations:
           1) <b>Unsupervised Clustering</b>: using the embeddings of time series foundation models;
           2) <b>Light Curve Classification</b>: via linear, MLP, k-NN and random forest probing;
           3) <b>Out-of-distribution Detection</b>: ADD SOME TEXT.
-          <!-- 4) <b>expert-level</b> perception and reasoning rooted in deep subject knowledge. -->
         </p>
       </div>
     </section>
@@ -248,8 +254,8 @@
                 fully supervised pipelines toward adopting generic foundation model representa-
                 tions for the analysis of peta-scale datasets from forthcoming observatories.
               </p>
-              <img src="static/images/MMMU_Tracking_Figure.png" alt="algebraic reasoning" width="100%">
-              <br>
+              <!-- <img src="static/images/MMMU_Tracking_Figure.png" alt="algebraic reasoning" width="100%">
+              <br> -->
             </div>
           </div>
         </div>
@@ -261,7 +267,7 @@
     <section class="hero is-light is-small">
       <div class="hero-body has-text-centered">
         <h1 class="title is-1 mmmu">
-          <img src="static/images/mmmu_icon2.png" alt="Logo" class="mmmu-logo"/>
+          <img src="static/images/star_logos/milky2.jpg" alt="Logo" class="mmmu-logo"/>
           <span class="mmmu">Dataset and Challenges</span>
         </h1>
       </div>
@@ -271,23 +277,103 @@
       <div class="container">
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
-            <h2 class="title is-3">Overview</h2>
+            <h2 class="title is-3">Dataset & Statistics</h2>
             <div class="content has-text-justified">
               <p>
-                DESCRIPTION ON DATASET AND EXISTING CHALLENGES IN LIGHT CURVE ANALYSIS (SEASONAL GAP...)
-                <!-- We evaluate existing time series foundation models on a large ... -->
-                <!-- We introduce the Massive Multi-discipline Multimodal Understanding and Reasoning (MMMU) benchmark, a novel benchmark meticulously curated to assess the expert-level multimodal understanding capability of foundation models across a broad scope of tasks. Covering subjects across disciplines, including Art, Business, Health & Medicine, Science, Humanities & Social Science, and Tech & Engineering, and over subfields. The detailed subject coverage and statistics are detailed in the figure. The questions in our benchmark were manually collected by a team of college students (including coauthors) from various disciplines and subjects, drawing from online sources, textbooks, and lecture materials. -->
+                The benchmark dataset includes multi-variate time-series observations of periodic variable stars. The flux is presented in magnitudes (an astronomy specific unit), while the time is recorded as the modified Julian date. 
+                The observations are from the 
+                <a href="https://ui.adsabs.harvard.edu/abs/2019PASP..131a8002B/abstract/">Zwicky Transient Facility (ZTF)</a>, 
+                which repeatedly scans all stars visible from the Northern hemisphere every few days. ZTF observes in three different passbands, g, r and i
+                roughly corresponding to visible green, visible red, and (outside the visible) infrared light, respectively. 
+                We use observations from ZTF data release 23 (DR23) which spans a duration of ~6.5 yr and contains billions of light curves. 
+                While many labels for periodic variable stars exist within the literature, the vast majority of these labels are derived from low-capacity machine learning models. 
+                A careful selection of light curves is therefore warranted to prevent significant label noise within the benchmark.  
+                We thus avoid these catalogs in establishing this benchmark.
+                <!-- \footnote{Most ZTF sources have very few or no observations in $i$ band and we therefore exclude it from our analysis. } (see \Cref{fig:lc})  -->
+                <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: 2rem auto;">
+                  <caption style="caption-side: top; text-align: center; font-weight: bold; margin-bottom: 1rem;">
+                    Number of periodic variable stars in our dataset across each class and in each split
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th>Class</th>
+                      <th>EW</th>
+                      <th>EA</th>
+                      <th>RRab</th>
+                      <th>RRc</th>
+                      <th>RRd</th>
+                      <th>RS CVn</th>
+                      <th>LPV</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>Train</strong></td>
+                      <td>18,998</td>
+                      <td>2,889</td>
+                      <td>1,386</td>
+                      <td>3,233</td>
+                      <td>298</td>
+                      <td>942</td>
+                      <td>255</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Validation</strong></td>
+                      <td>2,690</td>
+                      <td>410</td>
+                      <td>194</td>
+                      <td>463</td>
+                      <td>42</td>
+                      <td>134</td>
+                      <td>35</td>
+                    </tr>
+                    <tr>
+                      <td><strong>Test</strong></td>
+                      <td>5,387</td>
+                      <td>818</td>
+                      <td>397</td>
+                      <td>926</td>
+                      <td>83</td>
+                      <td>276</td>
+                      <td>70</td>
+                    </tr>
+                    <tr style="border-top: 2px solid #000;">
+                      <td><strong>Total after cuts</strong></td>
+                      <td><strong>27,075</strong></td>
+                      <td><strong>4,117</strong></td>
+                      <td><strong>1,977</strong></td>
+                      <td><strong>4,622</strong></td>
+                      <td><strong>423</strong></td>
+                      <td><strong>1,352</strong></td>
+                      <td><strong>360</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
               </p>
-              <img src="static/images/mmlu_example.Jpeg" alt="algebraic reasoning" class="center">
-              <br>
               <p>
-                CONT. OF THE DESCRIPTION
-                 <!-- MMMU is designed to measure three essential skills in LMMs: perception, knowledge, and reasoning. Our aim is to evaluate how well these models can not only perceive and understand information across different modalities but also apply reasoning with subject-specific knowledge to derive the solution. -->
-              </p>
-              <p>
-                CONT. (2) OF THE DESCRIPTION
+                One can observe that not only does the label distribution is highly imbalanced, but also the number of observations is limited (40k labels across 7 classes with over billions of light curves).
               </p>
             </div>
+            <h2 class="title is-3">Challenges</h2>
+            <div class="content has-text-justified">
+              <p>
+                Several challenges are posted in analyzing the light-curve data, such as the massive data scale, limited labels, irregular data points and various of noises.
+                Example ZTF light curves illustrating unique characteristics of astronomical time series, including multiple passbands, large observational gaps, and heteroskedastic uncertainties.
+                <em>Top panel</em>: Observed light curve of a periodic variable exhibiting typical characteristics of the observations. 
+                The inset shows the full ~6.5 year duration of ZTF observations.
+                <em>Lower panels</em>: Phase-folded light curves highlighting the differing periodic patterns in three different classes. 
+                Note that most stars have few i passband observations so we exclude these data from our analysis.            
+              </p>
+              <p>
+                <img src="static/images/star-embed/challenges.jpg" alt="Challenges in analyzing light-curve data" width="100%">
+              </p>
+              <br>
+              <p>
+                In light curve datasets, very often the data points are irregularly sampled, sometimes due to the seasonal gaps, bad weather conditions, etc.
+                Also, the data points are often accompanied by heteroskedasticity, which means the variance of the data points is not constant.
+                These challenges make the analysis of light curves more difficult.
+              </p>
+            </div>          
           </div>
         </div>
 
@@ -311,7 +397,7 @@
           </div>
         </div> -->
 
-        <div class="columns is-centered m-6">
+        <!-- <div class="columns is-centered m-6">
           <div class="column is-full has-text-centered content">
             <h2 class="title is-3">Statistics</h2>
             <div class="carousel results-carousel">
@@ -335,14 +421,14 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </section>
 
     <!-- RESULTS SECTION -->
     <section class="hero is-light is-small">
       <div class="hero-body has-text-centered">
-        <h1 class="title is-1 mmmu">Experiment Results</h1>
+        <h1 class="title is-1 mmmu">Experimental Results</h1>
       </div>
     </section>
 
@@ -359,46 +445,48 @@
             </div>
             <br>
             <div class="model-labels-container">
-              <span class="leaderboard-label human_expert">Human Expert</span>
-              <span class="leaderboard-label open_source">Open-Source</span>
-              <span class="leaderboard-label proprietary">Proprietary</span>
+              <span class="leaderboard-label tsfm">Time Series Foundation Models</span>
+              <span class="leaderboard-label baseline">Baseline</span>
             </div>
             <br>
             <div class="content has-text-centered">
               <p>
                 Click on Clustering (K-Means), Clustering (Ward), Classification (MLP), Classification (Logistic), Classification (RF) and Classification (k-NN) to expand detailed results.
-                <!-- MMMU-Pro, MMMU (Val) or MMMU (Test) to expand detailed results. -->
               </p>
             </div>
             <div class="leaderboard-container">
               <div class="content has-text-right is-size-7 has-text-grey">
                 <p>Last updated: 09/30/2025</p>
               </div>
-              <div class="table-wrapper">
-                <table id="starembed-table">
+              
+              <!-- Clustering Table -->
+              <div class="table-wrapper" style="margin-bottom: 2rem;">
+                <h3 class="title is-4">Clustering Results</h3>
+                <table id="clustering-table">
                   <thead>
+                    <!-- Row 1: Main groups -->
                     <tr>
                       <th colspan="3" class="reset-cell clickable" style="text-align:center;">Reset</th>
-              
-                      <!-- New mega-groups -->
-                      <th class="clickable" colspan="2" style="text-align:center;">Clustering</th>
-                      <th class="clickable" colspan="4" style="text-align:center;">Classification</th>
+                      <th colspan="3" class="clickable" style="text-align:center;">K-Means</th>
+                      <th colspan="3" class="clickable" style="text-align:center;">Ward</th>
                     </tr>
+                    
+                    <!-- Row 2: Column headers -->
                     <tr>
-                      <!-- Meta columns -->
+                      <!-- Reset columns -->
                       <th class="sortable clickable" data-sort="string">Name</th>
                       <th class="clickable" data-sort="string">Size</th>
                       <th class="sortable clickable" data-sort="date">Date</th>
-              
-                      <!-- Clustering -->
-                      <th class="sortable clickable" data-sort="number" data-metric="kmeans">K-Means</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="ward">Ward</th>
-              
-                      <!-- Classification -->
-                      <th class="sortable clickable" data-sort="number" data-metric="mlp">MLP</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="knn">k-NN</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="logistic">Logistic</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="rf">Random Forest</th>
+                      
+                      <!-- K-Means columns -->
+                      <th class="sortable clickable" data-sort="number" data-metric="kmeans_nmi">NMI</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="kmeans_ari">ARI</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="kmeans_f1">F1</th>
+                      
+                      <!-- Ward columns -->
+                      <th class="sortable clickable" data-sort="number" data-metric="ward_nmi">NMI</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="ward_ari">ARI</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="ward_f1">F1</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -406,208 +494,247 @@
                   </tbody>
                 </table>
                 <p class="test-desc">
-                  Results on StarEmbed downstream tasks. “Clustering” uses unsupervised heads (K-Means, Ward);
-                  “Classification” uses simple supervised heads (MLP, k-NN, Logistic, Random Forest).
+                  Clustering results using unsupervised heads (K-Means, Ward) with metrics (NMI, ARI, F1).
+                  The best in each column is <b>bold</b>, second best is <u>underlined</u>.
+                </p>
+              </div>
+
+              <!-- Classification Table -->
+              <div class="table-wrapper">
+                <h3 class="title is-4">Classification Results</h3>
+                <table id="classification-table">
+                  <thead>
+                    <!-- Row 1: Main groups -->
+                    <tr>
+                      <th colspan="3" class="reset-cell clickable" style="text-align:center;">Reset</th>
+                      <th colspan="4" class="clickable" style="text-align:center;">MLP</th>
+                      <th colspan="4" class="clickable" style="text-align:center;">k-NN</th>
+                      <th colspan="4" class="clickable" style="text-align:center;">Logistic</th>
+                      <th colspan="4" class="clickable" style="text-align:center;">Random Forest</th>
+                    </tr>
+                    
+                    <!-- Row 2: Column headers -->
+                    <tr>
+                      <!-- Reset columns -->
+                      <th class="sortable clickable" data-sort="string">Name</th>
+                      <th class="clickable" data-sort="string">Size</th>
+                      <th class="sortable clickable" data-sort="date">Date</th>
+                      
+                      <!-- MLP columns -->
+                      <th class="sortable clickable" data-sort="number" data-metric="mlp_accuracy">Acc.</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="mlp_recall">Recall</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="mlp_precision">Precision</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="mlp_f1">F1</th>
+                      
+                      <!-- k-NN columns -->
+                      <th class="sortable clickable" data-sort="number" data-metric="knn_accuracy">Acc.</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="knn_recall">Recall</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="knn_precision">Precision</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="knn_f1">F1</th>
+                      
+                      <!-- Logistic columns -->
+                      <th class="sortable clickable" data-sort="number" data-metric="logistic_accuracy">Acc.</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="logistic_recall">Recall</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="logistic_precision">Precision</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="logistic_f1">F1</th>
+                      
+                      <!-- Random Forest columns -->
+                      <th class="sortable clickable" data-sort="number" data-metric="rf_accuracy">Acc.</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="rf_recall">Recall</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="rf_precision">Precision</th>
+                      <th class="sortable clickable" data-sort="number" data-metric="rf_f1">F1</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Populated dynamically -->
+                  </tbody>
+                </table>
+                <p class="test-desc">
+                  Classification results using simple supervised heads (MLP, k-NN, Logistic, Random Forest) with metrics (Accuracy, Recall, Precision, F1).
                   The best in each column is <b>bold</b>, second best is <u>underlined</u>.
                 </p>
               </div>
               
               <script>
-                // Replace your old data source with these paper-specific models.
-                // Leave Size/metrics empty unless you have verified values.
-                const models = [
-                  { name: "Hand-crafted Features", size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
-                  { name: "Chronos-tiny",          size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
-                  { name: "Chronos-Bolt-tiny",     size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
-                  { name: "Moirai-small",          size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
-                  { name: "Astromer-1",            size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
-                  { name: "Astromer-2",            size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
-                  { name: "Random Embeddings",     size: "", date: "", kmeans: "", ward: "", mlp: "", knn: "", logistic: "", rf: "" },
-                ];
-              
-                // Example: render rows (adapt to your existing table code / sorter)
-                const tbody = document.querySelector("#starembed-table tbody");
-                function renderRows(rows) {
-                  tbody.innerHTML = rows.map(r => `
-                    <tr>
-                      <td>${r.name}</td>
-                      <td>${r.size || ""}</td>
-                      <td>${r.date || ""}</td>
-                      <td>${r.kmeans || ""}</td>
-                      <td>${r.ward || ""}</td>
-                      <td>${r.mlp || ""}</td>
-                      <td>${r.knn || ""}</td>
-                      <td>${r.logistic || ""}</td>
-                      <td>${r.rf || ""}</td>
-                    </tr>
-                  `).join("");
+                // Load StarEmbed leaderboard data from JSON
+                document.addEventListener('DOMContentLoaded', function() {
+                  loadStarEmbedData();
+                });
+
+                function loadStarEmbedData() {
+                  fetch('./leaderboard_data.json')
+                    .then(response => {
+                      if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                      }
+                      return response.json();
+                    })
+                    .then(data => {
+                      console.log('StarEmbed data loaded successfully:', data);
+                      renderClusteringTable(data.leaderboardData);
+                      renderClassificationTable(data.leaderboardData);
+                    })
+                    .catch(error => {
+                      console.error('Error loading StarEmbed data:', error);
+                      document.querySelector('#clustering-table tbody').innerHTML = `
+                        <tr>
+                          <td colspan="9">Error loading data: ${error.message}</td>
+                        </tr>
+                      `;
+                      document.querySelector('#classification-table tbody').innerHTML = `
+                        <tr>
+                          <td colspan="19">Error loading data: ${error.message}</td>
+                        </tr>
+                      `;
+                    });
                 }
-                renderRows(models);
-              
-                // Optional helpers to bold best / underline second best per column (if/when you add numbers)
-                function styleColumnBest(colKey) {
-                  const rows = Array.from(tbody.querySelectorAll("tr"));
-                  const vals = rows.map(tr => {
-                    const map = ["name","size","date","kmeans","ward","mlp","knn","logistic","rf"];
-                    const idx = map.indexOf(colKey);
-                    const td = tr.children[idx];
-                    const v = parseFloat(td.textContent);
-                    return { td, v: isFinite(v) ? v : -Infinity };
-                  }).filter(x => Number.isFinite(x.v));
-              
-                  if (vals.length < 2) return;
-                  vals.sort((a,b)=>b.v-a.v);
-                  vals[0].td.style.fontWeight = "700";          // best → bold
-                  vals[1].td.style.textDecoration = "underline"; // second best → underline
+
+                function renderClusteringTable(models) {
+                  const tbody = document.querySelector("#clustering-table tbody");
+                  
+                  // Prepare data for styling
+                  const clusteringScores = prepareClusteringScores(models);
+
+                  tbody.innerHTML = models.map((model, index) => {
+                    const nameCell = getModelNameCell(model);
+
+                    return `
+                      <tr class="${model.info.type}">
+                        <td>${nameCell}</td>
+                        <td>${model.info.size}</td>
+                        <td>${model.info.date}</td>
+                        <td>${applyStyle(model.clustering.kmeans.nmi, clusteringScores.kmeans_nmi[index])}</td>
+                        <td>${applyStyle(model.clustering.kmeans.ari, clusteringScores.kmeans_ari[index])}</td>
+                        <td>${applyStyle(model.clustering.kmeans.f1, clusteringScores.kmeans_f1[index])}</td>
+                        <td>${applyStyle(model.clustering.ward.nmi, clusteringScores.ward_nmi[index])}</td>
+                        <td>${applyStyle(model.clustering.ward.ari, clusteringScores.ward_ari[index])}</td>
+                        <td>${applyStyle(model.clustering.ward.f1, clusteringScores.ward_f1[index])}</td>
+                      </tr>
+                    `;
+                  }).join('');
                 }
-                // Call after you populate numeric values:
-                // ["kmeans","ward","mlp","knn","logistic","rf"].forEach(styleColumnBest);
-              </script>              
-            <div class="table-wrapper">
-              <table id="starembed-table">
-                <thead>
-                  <!-- Row 1: mega-groups -->
-                  <tr>
-                    <th colspan="3" class="reset-cell clickable" style="text-align:center;">Reset</th>
-                    <th colspan="6" class="clickable" style="text-align:center;">Clustering</th>
-                    <th colspan="4" class="clickable" style="text-align:center;">Classification</th>
-                  </tr>
 
-                  <!-- Row 2: method groups under Clustering -->
-                  <tr>
-                    <!-- meta -->
-                    <th class="sortable clickable" data-sort="string">Name</th>
-                    <th class="clickable" data-sort="string">Size</th>
-                    <th class="sortable clickable" data-sort="date">Date</th>
+                function renderClassificationTable(models) {
+                  const tbody = document.querySelector("#classification-table tbody");
+                  
+                  // Prepare data for styling
+                  const classificationScores = prepareClassificationScores(models);
 
-                    <!-- K-Means (3 metrics) -->
-                    <th colspan="3" style="text-align:center;">K-Means</th>
-                    <!-- Ward (3 metrics) -->
-                    <th colspan="3" style="text-align:center;">Ward</th>
+                  tbody.innerHTML = models.map((model, index) => {
+                    const nameCell = getModelNameCell(model);
 
-                    <!-- Classification heads -->
-                    <th class="sortable clickable" data-sort="number" data-metric="mlp">MLP</th>
-                    <th class="sortable clickable" data-sort="number" data-metric="knn">k-NN</th>
-                    <th class="sortable clickable" data-sort="number" data-metric="logistic">Logistic</th>
-                    <th class="sortable clickable" data-sort="number" data-metric="rf">Random Forest</th>
-                  </tr>
+                    return `
+                      <tr class="${model.info.type}">
+                        <td>${nameCell}</td>
+                        <td>${model.info.size}</td>
+                        <td>${model.info.date}</td>
+                        <td>${applyStyle(model.classification.mlp.accuracy, classificationScores.mlp_accuracy[index])}</td>
+                        <td>${applyStyle(model.classification.mlp.recall, classificationScores.mlp_recall[index])}</td>
+                        <td>${applyStyle(model.classification.mlp.precision, classificationScores.mlp_precision[index])}</td>
+                        <td>${applyStyle(model.classification.mlp.f1, classificationScores.mlp_f1[index])}</td>
+                        <td>${applyStyle(model.classification.knn.accuracy, classificationScores.knn_accuracy[index])}</td>
+                        <td>${applyStyle(model.classification.knn.recall, classificationScores.knn_recall[index])}</td>
+                        <td>${applyStyle(model.classification.knn.precision, classificationScores.knn_precision[index])}</td>
+                        <td>${applyStyle(model.classification.knn.f1, classificationScores.knn_f1[index])}</td>
+                        <td>${applyStyle(model.classification.logistic.accuracy, classificationScores.logistic_accuracy[index])}</td>
+                        <td>${applyStyle(model.classification.logistic.recall, classificationScores.logistic_recall[index])}</td>
+                        <td>${applyStyle(model.classification.logistic.precision, classificationScores.logistic_precision[index])}</td>
+                        <td>${applyStyle(model.classification.logistic.f1, classificationScores.logistic_f1[index])}</td>
+                        <td>${applyStyle(model.classification.rf.accuracy, classificationScores.rf_accuracy[index])}</td>
+                        <td>${applyStyle(model.classification.rf.recall, classificationScores.rf_recall[index])}</td>
+                        <td>${applyStyle(model.classification.rf.precision, classificationScores.rf_precision[index])}</td>
+                        <td>${applyStyle(model.classification.rf.f1, classificationScores.rf_f1[index])}</td>
+                      </tr>
+                    `;
+                  }).join('');
+                }
 
-                  <!-- Row 3: metric names -->
-                  <tr>
-                    <!-- meta -->
-                    <th class="hidden"></th>
-                    <th class="hidden"></th>
-                    <th class="hidden"></th>
+                function prepareClusteringScores(data) {
+                  const scores = {};
+                  const metrics = ['kmeans_nmi', 'kmeans_ari', 'kmeans_f1', 'ward_nmi', 'ward_ari', 'ward_f1'];
+                  
+                  metrics.forEach(metric => {
+                    const [method, metricName] = metric.split('_');
+                    const values = data.map(row => {
+                      const value = row.clustering[method][metricName];
+                      return value === '' ? null : parseFloat(value);
+                    }).filter(v => v !== null);
+                    
+                    if (values.length > 0) {
+                      const sortedValues = [...new Set(values)].sort((a, b) => b - a);
+                      scores[metric] = data.map(row => {
+                        const value = row.clustering[method][metricName];
+                        if (value === '' || value === null) return -1;
+                        return sortedValues.indexOf(parseFloat(value));
+                      });
+                    } else {
+                      scores[metric] = data.map(() => -1);
+                    }
+                  });
+                  
+                  return scores;
+                }
 
-                    <!-- K-Means metrics -->
-                    <th class="sortable clickable" data-sort="number" data-metric="kmeans_nmi">NMI</th>
-                    <th class="sortable clickable" data-sort="number" data-metric="kmeans_ari">ARI</th>
-                    <th class="sortable clickable" data-sort="number" data-metric="kmeans_ami">F1</th>
+                function prepareClassificationScores(data) {
+                  const scores = {};
+                  const metrics = ['mlp_accuracy', 'mlp_recall', 'mlp_precision', 'mlp_f1', 
+                                 'knn_accuracy', 'knn_recall', 'knn_precision', 'knn_f1',
+                                 'logistic_accuracy', 'logistic_recall', 'logistic_precision', 'logistic_f1',
+                                 'rf_accuracy', 'rf_recall', 'rf_precision', 'rf_f1'];
+                  
+                  metrics.forEach(metric => {
+                    const [method, metricName] = metric.split('_');
+                    const values = data.map(row => {
+                      const value = row.classification[method][metricName];
+                      return value === '' ? null : parseFloat(value);
+                    }).filter(v => v !== null);
+                    
+                    if (values.length > 0) {
+                      const sortedValues = [...new Set(values)].sort((a, b) => b - a);
+                      scores[metric] = data.map(row => {
+                        const value = row.classification[method][metricName];
+                        if (value === '' || value === null) return -1;
+                        return sortedValues.indexOf(parseFloat(value));
+                      });
+                    } else {
+                      scores[metric] = data.map(() => -1);
+                    }
+                  });
+                  
+                  return scores;
+                }
 
-                    <!-- Ward metrics -->
-                    <th class="sortable clickable" data-sort="number" data-metric="ward_nmi">NMI</th>
-                    <th class="sortable clickable" data-sort="number" data-metric="ward_ari">ARI</th>
-                    <th class="sortable clickable" data-sort="number" data-metric="ward_ami">F1</th>
+                function applyStyle(value, rank) {
+                  if (value === undefined || value === null || value === '') return '-';
+                  if (rank === 0) return `<b>${value}</b>`;
+                  if (rank === 1) return `<span style="text-decoration: underline;">${value}</span>`;
+                  return value;
+                }
 
-                    <!-- Classification (no sub-metrics) -->
-                    <th class="hidden"></th>
-                    <th class="hidden"></th>
-                    <th class="hidden"></th>
-                    <th class="hidden"></th>
-                  </tr>
-                </thead>
+                function getModelNameCell(model) {
+                  // Map model names to their corresponding model card paths
+                  const modelCardMap = {
+                    'Hand-crafted Features': 'static/model_card/hand-crafted-features/',
+                    'Chronos-tiny': 'static/model_card/chronos/',
+                    'Chronos-Bolt-tiny': 'static/model_card/chronos-bolt-tiny/',
+                    'Moirai-small': 'static/model_card/moirai-small/',
+                    'Astromer-1': 'static/model_card/astromer-1/',
+                    'Astromer-2': 'static/model_card/astromer-2/',
+                    'Random Embeddings': 'static/model_card/random-embeddings/'
+                  };
 
-                <tbody></tbody>
-              </table>
-
-              <p class="test-desc">
-                Results on StarEmbed downstream tasks. Clustering uses K-Means and Ward with metrics (NMI, ARI, AMI).
-                Classification uses simple heads (MLP, k-NN, Logistic, Random Forest).
-                Best in each metric is <b>bold</b>, second best is <u>underlined</u>.
-              </p>
-            </div>
-            <script>
-              // ---- Data model (fill in your numbers when ready) ----
-              const models = [
-                { name: "Hand-crafted Features", size: "-", date: "-",
-                  kmeans_nmi:"26.19", kmeans_ari:"11.39", kmeans_ami:"40.28",
-                  ward_nmi:"25.08", ward_ari:"13.19", ward_ami:"33.23",
-                  mlp:"73.5", knn:"71.2", logistic:"71.4", rf:"80.7" },
-
-                { name: "Chronos-tiny", size: "8M", date: "[03-2024]",
-                  kmeans_nmi:"24.32", kmeans_ari:"15.9", kmeans_ami:"34.1",
-                  ward_nmi:"18.9", ward_ari:"12.17", ward_ami:"36.71",
-                  mlp:"64.5", knn:"67.2", logistic:"61.7", rf:"64.0" },
-
-                { name: "Chronos-Bolt-tiny", size: "9M", date: "[12-2024]",
-                  kmeans_nmi:"21.34", kmeans_ari:"12.45", kmeans_ami:"31.36",
-                  ward_nmi:"22.73", ward_ari:"15.53", ward_ami:"36.62",
-                  mlp:"61.2", knn:"57.0", logistic:"58.0", rf:"58.2" },
-
-                { name: "Moirai-small", size: "14M", date: "[02-2024]",
-                  kmeans_nmi:"17.24", kmeans_ari:"9.78", kmeans_ami:"28.16",
-                  ward_nmi:"14.76", ward_ari:"8.28", ward_ami:"26.12",
-                  mlp:"59.2", knn:"55.4", logistic:"57.9", rf:"55.4" },
-
-                { name: "Astromer-1", size: "0.66M", date: "[05-2022]",
-                  kmeans_nmi:"0.41", kmeans_ari:"0.22", kmeans_ami:"16.59",
-                  ward_nmi:"0.41", ward_ari:"0.01", ward_ami:"16.52",
-                  mlp:"13.4", knn:"12.2", logistic:"7.2", rf:"11.5" },
-
-                { name: "Astromer-2", size: "5.4M", date: "[02-2025]",
-                  kmeans_nmi:"0.76", kmeans_ari:"1.43", kmeans_ami:"15.71",
-                  ward_nmi:"", ward_ari:"", ward_ami:"",
-                  mlp:"38.8", knn:"53.7", logistic:"52.1", rf:"58.0" },
-
-                { name: "Random Embeddings", size: "-", date: "-",
-                  kmeans_nmi:"0.03", kmeans_ari:"0.0", kmeans_ami:"9.71",
-                  ward_nmi:"0.03", ward_ari:"0.04", ward_ami:"11.2",
-                  mlp:"9.6", knn:"12.0", logistic:"7.6", rf:"11.5" },
-              ];
-
-              // Column order map (to render cells easily)
-              const COLS = [
-                "name","size","date",
-                "kmeans_nmi","kmeans_ari","kmeans_ami",
-                "ward_nmi","ward_ari","ward_ami",
-                "mlp","knn","logistic","rf"
-              ];
-
-              // ---- Render ----
-              const tbody = document.querySelector("#starembed-table tbody");
-              function renderRows(rows) {
-                tbody.innerHTML = rows.map(r => `
-                  <tr>
-                    ${COLS.map(key => `<td data-key="${key}">${r[key] ?? ""}</td>`).join("")}
-                  </tr>
-                `).join("");
-              }
-              renderRows(models);
-
-              // ---- Best/second-best styling for numeric columns ----
-              function styleBestSecond(colKey) {
-                const idx = COLS.indexOf(colKey);
-                if (idx < 0) return;
-                const rows = Array.from(tbody.querySelectorAll("tr"));
-                const vals = rows.map(tr => {
-                  const td = tr.children[idx];
-                  const v = parseFloat(td.textContent);
-                  return { td, v: Number.isFinite(v) ? v : -Infinity };
-                }).filter(x => Number.isFinite(x.v));
-                if (vals.length < 2) return;
-                vals.sort((a,b) => b.v - a.v);
-                vals[0].td.style.fontWeight = "700";           // best
-                vals[1].td.style.textDecoration = "underline"; // second
-              }
-
-              // Call this after you populate real numbers:
-              const METRIC_KEYS = [
-                "kmeans_nmi","kmeans_ari","kmeans_ami",
-                "ward_nmi","ward_ari","ward_ami",
-                "mlp","knn","logistic","rf"
-              ];
-              // METRIC_KEYS.forEach(styleBestSecond);
-            </script>
+                  const modelCardPath = modelCardMap[model.info.name];
+                  
+                  if (modelCardPath) {
+                    return `<a href="${modelCardPath}" target="_blank"><b>${model.info.name}</b></a>`;
+                  } else {
+                    // Fallback to original link if available, otherwise just bold text
+                    return model.info.link && model.info.link.trim() !== '' ?
+                      `<a href="${model.info.link}" target="_blank"><b>${model.info.name}</b></a>` :
+                      `<b>${model.info.name}</b>`;
+                  }
+                }
+              </script>
 
               <!-- <div class="table-wrapper">
                 <table id="mmmu-table">
@@ -653,224 +780,7 @@
         <!-------------------------------------------------------------------- Image Type SECTION -------------------------------------------------------------------->
         <div class="columns is-centered m-6">
           <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Different Image Types</h2>
-            <div class="content has-text-justified">
-              <p>
-                We compare the performance of various models across top frequent image types.
-                Across all types, GPT-4V consistently outperforms the other models by a huge margin.
-                Open-source models demonstrate relatively strong performance in categories like Photos and Paintings, which are more frequently seen during training.
-                However, for less common image categories like Geometric shapes, Music sheets and Chemical structures, all models obtain very low scores (some are close to random guesses).
-                This indicates that the existing models are generalizing poorly towards these image types.
-              </p>
-            </div>
-            <div class="model-labels-container">
-              <span class="model-label" style="background-color: rgba(196, 123, 160, 0.5);">Adept Fuyu-8B</span>
-              <span class="model-label" style="background-color: rgba(245, 123, 113, 0.5);">Qwen-VL-7B-Chat</span>
-              <span class="model-label" style="background-color: rgba(255, 208, 80, 0.5);">LLaVA-1.5-13B</span>
-              <span class="model-label" style="background-color: rgba(110, 194, 134, 0.5);">InstructBLIP-T5-XXL</span>
-              <span class="model-label" style="background-color: rgba(255, 153, 78, 0.5);">BLIP-2 FLAN-T5-XXL</span>
-              <span class="model-label" style="background-color: rgba(42, 149, 235, 0.5);">Yi-VL-34B</span>
-              <span class="model-label" style="background-color: rgba(183, 156, 220, 0.5);">LLaVA-1.6-34B</span>
-              <span class="model-label" style="background-color: rgba(143, 169, 209, 0.5);">InternVL-Chat-V1.2</span>
-              <span class="model-label" style="background-color: rgba(72, 199, 176, 0.5);">VILA1.5</span>
-              <span class="model-label" style="background-color: rgba(117, 209, 215, 0.5);">GPT-4V</span>
-            </div>
-            <div class="content has-text-centered">
-              <div class="chart-grid">
-                <!-- Chart 1: Diagrams -->
-                <div class="chart-item">
-                    <canvas id="chart_Diagrams"></canvas>
-                    <p class="chart-label">Diagrams (3184)</p>
-                </div>
-                <!-- Chart 2: Tables -->
-                <div class="chart-item">
-                    <canvas id="chart_Tables"></canvas>
-                    <p class="chart-label">Tables (2267)</p>
-                </div>
-                <!-- Chart 3: Plots and Charts -->
-                <div class="chart-item">
-                  <canvas id="chart_PlotsAndCharts"></canvas>
-                  <p class="chart-label">Plots and Charts (840)</p>
-                </div>
-                <!-- Chart 4: Chemical Structures -->
-                <div class="chart-item">
-                  <canvas id="chart_ChemicalStructures"></canvas>
-                  <p class="chart-label">Chemical Structures (573)</p>
-                </div>
-                <!-- Chart 5: Photographs -->
-                <div class="chart-item">
-                  <canvas id="chart_Photographs"></canvas>
-                  <p class="chart-label">Photographs (770)</p>
-                </div>
-                <!-- Chart 6: Paintings -->
-                <div class="chart-item">
-                  <canvas id="chart_Paintings"></canvas>
-                  <p class="chart-label">Paintings (453)</p>
-                </div>
-                <!-- Chart 7: Geometric Shapes -->
-                <div class="chart-item">
-                  <canvas id="chart_GeometricShapes"></canvas>
-                  <p class="chart-label">Geometric Shapes (336)</p>
-                </div>
-                <!-- Chart 8: Sheet Music -->
-                <div class="chart-item">
-                  <canvas id="chart_SheetMusic"></canvas>
-                  <p class="chart-label">Sheet Music (335)</p>
-                </div>
-                <!-- Chart 9: Medical Images -->
-                <div class="chart-item">
-                  <canvas id="chart_MedicalImages"></canvas>
-                  <p class="chart-label">Medical Images (272)</p>
-                </div>
-                <!-- Chart 10: Pathological Images -->
-                <div class="chart-item">
-                  <canvas id="chart_PathologicalImages"></canvas>
-                  <p class="chart-label">Pathological Images (253)</p>
-                </div>
-                <!-- Chart 11: Microscopic Images -->
-                <div class="chart-item">
-                  <canvas id="chart_MicroscopicImages"></canvas>
-                  <p class="chart-label">Microscopic Images (226)</p>
-                </div>
-                <!-- Chart 12: MRI, CT scans, and X-rays -->
-                <div class="chart-item">
-                  <canvas id="chart_MRIsCTScansXrays"></canvas>
-                  <p class="chart-label">MRI, CT scans, and X-rays (198)</p>
-                </div>
-                <!-- Chart 13: Sketches and Drafts -->
-                <div class="chart-item">
-                  <canvas id="chart_SketchesAndDrafts"></canvas>
-                  <p class="chart-label">Sketches and Drafts (184)</p>
-                </div>
-                <!-- Chart 14: Maps -->
-                <div class="chart-item">
-                  <canvas id="chart_Maps"></canvas>
-                  <p class="chart-label">Maps (170)</p>
-                </div>
-                <!-- Chart 15: Technical Blueprints -->
-                <div class="chart-item">
-                  <canvas id="chart_TechnicalBlueprints"></canvas>
-                  <p class="chart-label">Technical Blueprints (162)</p>
-                </div>
-                <!-- Chart 16: Trees and Graphs -->
-                <div class="chart-item">
-                  <canvas id="chart_TreesAndGraphs"></canvas>
-                  <p class="chart-label">Trees and Graphs (146)</p>
-                </div>
-                <!-- Chart 17: Mathematical Notations -->
-                <div class="chart-item">
-                  <canvas id="chart_MathematicalNotations"></canvas>
-                  <p class="chart-label">Mathematical Notations (133)</p>
-                </div>
-                <!-- Chart 18: Comics and Cartoons -->
-                <div class="chart-item">
-                  <canvas id="chart_ComicsAndCartoons"></canvas>
-                  <p class="chart-label">Comics and Cartoons (131)</p>
-                </div>
-                <!-- Chart 19: Sculpture -->
-                <div class="chart-item">
-                  <canvas id="chart_Sculpture"></canvas>
-                  <p class="chart-label">Sculpture (117)</p>
-                </div>
-                <!-- Chart 20: Portraits -->
-                <div class="chart-item">
-                  <canvas id="chart_Portraits"></canvas>
-                  <p class="chart-label">Portraits (91)</p>
-                </div>
-                <!-- Chart 21: Screenshots -->
-                <div class="chart-item">
-                  <canvas id="chart_Screenshots"></canvas>
-                  <p class="chart-label">Screenshots (70)</p>
-                </div>
-                <!-- Chart 22: Other -->
-                <div class="chart-item">
-                  <canvas id="chart_Other"></canvas>
-                  <p class="chart-label">Other(60)</p>
-                </div>
-                <!-- Chart 23: Poster -->
-                <div class="chart-item">
-                  <canvas id="chart_Poster"></canvas>
-                  <p class="chart-label">Poster(57)</p>
-                </div>
-                <!-- Chart 24: Icons and Symbols -->
-                <div class="chart-item">
-                  <canvas id="chart_IconsAndSymbols"></canvas>
-                  <p class="chart-label">Icons and Symbols (42)</p>
-                </div>
-                <!-- Chart 25: Historical Timelines -->
-                <div class="chart-item">
-                  <canvas id="chart_HistoricalTimelines"></canvas>
-                  <p class="chart-label">Historical Timelines (30)</p>
-                </div>
-                <!-- Chart 26: 3D Renderings -->
-                <div class="chart-item">
-                  <canvas id="chart_3DRenderings"></canvas>
-                  <p class="chart-label">3D Renderings (21)</p>
-                </div>
-                <!-- Chart 27: DNA Sequences -->
-                <div class="chart-item">
-                  <canvas id="chart_DNASequences"></canvas>
-                  <p class="chart-label">DNA Sequences (20)</p>
-                </div>
-                <!-- Chart 28: Landscapes -->
-                <div class="chart-item">
-                  <canvas id="chart_Landscapes"></canvas>
-                  <p class="chart-label">Landscapes (16)</p>
-                </div>
-                <!-- Chart 29: Logos and Branding -->
-                <div class="chart-item">
-                  <canvas id="chart_LogosAndBranding"></canvas>
-                  <p class="chart-label">Logos and Branding(14)</p>
-                </div>
-                <!-- Chart 30: Advertisements -->
-                <div class="chart-item">
-                  <canvas id="chart_Advertisements"></canvas>
-                  <p class="chart-label">Advertisements (10)</p>
-                </div>
-              </div>
-              <p class="bottom-text"> Selected models' performance on 30 different image types. Note that a single image may have multiple image types.</p>
-            </div>
-          </div>
-        </div>
-        <!-------------------------------------------------------------------- Difficulty Levels SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Different Difficulty Levels</h2>
-            <div class="content has-text-justified">
-              <p>
-                we compares the performance of selected models across three difficulty levels.
-                GPT-4V demonstrates a significantly higher proficiency, with a success rate of 76.1%, compared to opensource models in the “Easy” category.
-                When it comes to the “Medium” category, while the gap narrows, GPT-4V still leads at 55.6%.
-                The further diminishing performance gap in the “Hard” category across models indicates that as the complexity of tasks increases, the advantage of more advanced models like GPT-4V almost disappears.
-                This might reflect a current limitation in handling expert-level challenging queries even for the most advanced models.
-              </p>
-            </div>
-            <div class="content has-text-centered">
-              <p>Click legend to switch the comparison chart.</p>
-            </div>
-            <div class="content has-text-centered">
-              <canvas id="difficulty_level_chart"></canvas>
-              <p>Result decomposition across question difficulty levels.</p>
-            </div>
-          </div>
-        </div>
-      <!-------------------------------------------------------------------- Single VS Multiple image SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-        <div class="column is-full has-text-centered content">
-          <h2 class="title is-3">Single Image VS Multiple Image</h2>
-          <div class="content has-text-centered">
-            <div class="content has-text-centered">
-              <p>Click legend to switch the comparison chart.</p>
-            </div>
-            <canvas id="single_vs_multiple_chart"></canvas>
-            <p>Result decomposition across single image and multiple image tasks.</p>
-          </div>
-        </div>
-        </div>
-      <!-------------------------------------------------------------------- Error Analysis SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Error Analysis</h2>
+            <h2 class="title is-3">OOD Detection</h2>
             <div class="content has-text-justified">
               <p>
                 We delve into the analysis of errors by GPT-4V, a pivotal aspect for understanding its operational capabilities and limitations.
@@ -879,468 +789,71 @@
                 These instances are analyzed by expert annotators who identify the root causes of mispredictions based on their knowledge and the golden explanations if available.
                 The distribution of these errors is illustrated in Figure, and a selection of 100 notable cases, along with detailed analyses, is included in the Appendix.
               </p>
-            </div>
+            </div>            
             <div class="content has-text-centered">
-              <img src="static/images/error_distribution_1.Jpeg" alt="error distribution" width="25%">
-              <p> Error distribution over 150 annotated GPT-4V errors.</p>
+              <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+                <caption><strong>Results for out of distribution source detection.</strong> The best results are highlighted in bold, and the second-best results are underlined. The <code>Chronos-Bolt-tiny</code> performs very well on this task, ranking first across all metrics with hand-crafted features being a distant second.</caption>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th colspan="3" class="has-text-centered"><strong>Purity</strong></th>
+                  </tr>
+                  <tr>
+                    <th><strong></strong></th>
+                    <th><strong>Top 1 percentile</strong></th>
+                    <th><strong>Top 5 percentile</strong></th>
+                    <th><strong>Top 10 percentile</strong></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="static/model_card/astromer-1/index.html"><code>Astromer-1</code></a></td>
+                    <td>0.014 (0.020)</td>
+                    <td>0.087 (0.018)</td>
+                    <td>0.121 (0.001)</td>
+                  </tr>
+                  <tr>
+                    <td><a href="static/model_card/astromer-2/index.html"><code>Astromer-2</code></a></td>
+                    <td>0.139 (0.019)</td>
+                    <td>0.124 (0.001)</td>
+                    <td>0.119 (0.001)</td>
+                  </tr>
+                  <tr>
+                    <td><a href="static/model_card/moirai-small/index.html"><code>Moirai-small</code></a></td>
+                    <td>0.172 (0.023)</td>
+                    <td>0.143 (0.003)</td>
+                    <td>0.152 (0.002)</td>
+                  </tr>
+                  <tr>
+                    <td><a href="static/model_card/chronos/index.html"><code>Chronos-tiny</code></a></td>
+                    <td>0.165 (0.005)</td>
+                    <td>0.129 (0.017)</td>
+                    <td>0.158 (0.021)</td>
+                  </tr>
+                  <tr>
+                    <td><a href="static/model_card/chronos-bolt-tiny/index.html"><code>Chronos-Bolt-tiny</code></a></td>
+                    <td><strong>0.569 (0.037)</strong></td>
+                    <td><strong>0.536 (0.053)</strong></td>
+                    <td><strong>0.528 (0.050)</strong></td>
+                  </tr>
+                  <tr>
+                    <td><a href="static/model_card/random-embeddings/index.html">Random Embeddings</a></td>
+                    <td>0.116</td>
+                    <td>0.116</td>
+                    <td>0.116</td>
+                  </tr>
+                  <tr>
+                    <td><a href="static/model_card/hand-crafted-features/index.html">Hand-crafted features</a></td>
+                    <td><u>0.213(0.009)</u></td>
+                    <td><u>0.280(0.006)</u></td>
+                    <td><u>0.260(0.002)</u></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             </div>
           </div>
-        </div>
-      <!-------------------------------------------------------------------- Error Example  -------------------------------------------------------------------->
         <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3" id="examples">Error Examples</h2>
-            <div class="carousel results-carousel">
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/1.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/2.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/3.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/4.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/5.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/6.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/7.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/8.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/9.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/10.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/11.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/12.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/13.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <!-- <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/14.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div> -->
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/15.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/16.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/17.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/18.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/19.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/20.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/21.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/22.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/23.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/24.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/25.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/26.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/27.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/28.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/29.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/30.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/31.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/32.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/33.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/34.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/35.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/36.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/37.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/38.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/39.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/40.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/41.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/42.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/43.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/44.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/45.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/46.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/47.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/48.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/49.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/error/50.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      <!-------------------------------------------------------------------- Correct Example -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Correct Examples</h2>
-            <div id="results-carousel" class="carousel results-carousel">
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/1.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/2.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/3.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/4.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/5.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/6.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/7.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/8.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/9.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/10.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/11.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/12.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <!-- <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/13.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div> -->
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/14.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/15.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/16.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/17.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/18.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/19.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/20.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/21.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/22.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/23.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/24.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/25.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/26.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/27.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/28.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/29.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/30.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/31.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/32.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/33.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/34.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/35.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/36.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/37.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/correct/38.png" alt="grade-lv" width="60%"/>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
