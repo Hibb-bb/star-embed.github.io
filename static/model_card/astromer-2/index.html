@@ -6,109 +6,495 @@
 
     <!-- IMPORTANT: use correct relative paths, we're one level deeper -->
     <link rel="icon" href="../../static/images/star_logos/milky2.jpg">
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../static/css/bulma.min.css">
     <link rel="stylesheet" href="../../static/css/index.css">
     <script src="https://kit.fontawesome.com/f8ddf9854a.js" crossorigin="anonymous"></script>
     <style>
-      body {
-        font-family: 'Google Sans', 'Noto Sans', sans-serif;
+      :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        --warning-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --card-shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+        --border-radius: 16px;
+        --text-primary: #2d3748;
+        --text-secondary: #4a5568;
+        --text-muted: #718096;
       }
-      .model-header {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        color: var(--text-primary);
+        line-height: 1.6;
+      }
+
+      .dashboard-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: var(--primary-gradient);
+        border-radius: var(--border-radius);
+        padding: 3rem 2rem;
+        margin-bottom: 2rem;
         color: white;
-        padding: 2rem;
-        border-radius: 10px;
+        text-align: center;
+        box-shadow: var(--card-shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      .model-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .model-subtitle {
+        font-size: 1.25rem;
+        font-weight: 400;
+        opacity: 0.9;
+        margin-bottom: 1rem;
+      }
+
+      .model-tag {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+      }
+
+      /* Stats Grid */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
         margin-bottom: 2rem;
       }
-      .model-info-card {
-        background: #f8f9fa;
-        border-left: 4px solid #2c3e50;
-        padding: 1.5rem;
-        margin: 1rem 0;
-        border-radius: 0 8px 8px 0;
-      }
-      .link-button {
-        background: #2c3e50;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 25px;
-        text-decoration: none;
-        display: inline-block;
-        margin: 0.5rem;
-        transition: all 0.3s ease;
-      }
-      .link-button:hover {
-        background: #34495e;
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(44, 62, 80, 0.3);
-      }
-      .umap-container {
-        text-align: center;
-        margin: 2rem 0;
-        padding: 1rem;
+
+      .stat-card {
         background: white;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--card-shadow);
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--primary-gradient);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover);
+      }
+
+      .stat-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        color: white;
+      }
+
+      .stat-icon.architecture { background: var(--primary-gradient); }
+      .stat-icon.paper { background: var(--secondary-gradient); }
+      .stat-icon.github { background: var(--success-gradient); }
+      .stat-icon.huggingface { background: var(--warning-gradient); }
+
+      .stat-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-description {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      /* Action Buttons */
+      .action-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .btn {
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: var(--primary-gradient);
+        color: white;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: var(--text-primary);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+      }
+
+      /* Content Cards */
+      .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .main-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--card-shadow);
+      }
+
+      .sidebar-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--card-shadow);
+      }
+
+      .card-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary-gradient);
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      /* Architecture Details */
+      .architecture-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .architecture-list li {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e2e8f0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .architecture-list li:last-child {
+        border-bottom: none;
+      }
+
+      .architecture-label {
+        font-weight: 500;
+        color: var(--text-primary);
+      }
+
+      .architecture-value {
+        color: var(--text-secondary);
+        background: #f7fafc;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+      }
+
+      /* Visualization */
+      .visualization-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        box-shadow: var(--card-shadow);
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .visualization-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        margin: 1rem 0;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .content-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .model-title {
+          font-size: 2.5rem;
+        }
+        
+        .action-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+        
+        .btn {
+          width: 100%;
+          max-width: 300px;
+          justify-content: center;
+        }
+      }
+
+      /* Back to Home */
+      .back-button {
+        position: fixed;
+        top: 2rem;
+        left: 2rem;
+        background: white;
+        color: var(--text-primary);
+        padding: 0.75rem 1.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        box-shadow: var(--card-shadow);
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--card-shadow-hover);
       }
     </style>
   </head>
   <body>
-    <section class="section">
-      <div class="container is-max-desktop content">
-        <!-- Model Header -->
-        <div class="model-header">
-          <h1 class="title is-1 has-text-white">Astromer-2</h1>
-          <p class="subtitle is-4 has-text-white">Enhanced Astronomical Time Series Model</p>
-          <p class="is-size-6 has-text-white">Published: 2024</p>
+    <!-- Back to Home Button -->
+    <a href="../../../" class="back-button">
+      <i class="fas fa-arrow-left"></i> Back to Star-Embed
+    </a>
+
+    <div class="dashboard-container">
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="hero-content">
+          <h1 class="model-title">Astromer-2</h1>
+          <p class="model-subtitle">Enhanced Transformer-based Astronomical Time Series Model</p>
+          <span class="model-tag">Published 2023</span>
+        </div>
+      </div>
+
+      <!-- Quick Stats Grid -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon architecture">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3 class="stat-title">Architecture</h3>
+          <p class="stat-description">Enhanced transformer with improved attention mechanisms</p>
         </div>
 
-        <!-- Model Information Cards -->
-        <div class="columns">
-          <div class="column is-half">
-            <div class="model-info-card">
-              <h3 class="title is-5">📄 Paper</h3>
-              <p><a href="https://arxiv.org/abs/2502.02717" target="_blank" class="link-button">View Paper</a></p>
-            </div>
+        <div class="stat-card">
+          <div class="stat-icon paper">
+            <i class="fas fa-file-alt"></i>
           </div>
-          <div class="column is-half">
-            <div class="model-info-card">
-              <h3 class="title is-5">💻 GitHub</h3>
-              <p><a href="https://github.com/astromer-science/main-code" target="_blank" class="link-button">View Repository</a></p>
-            </div>
-          </div>
+          <h3 class="stat-title">Research Paper</h3>
+          <p class="stat-description">Published with comprehensive evaluation and benchmarks</p>
         </div>
 
-        <!-- Model Architecture -->
-        <div class="model-info-card">
-          <h3 class="title is-5">🏗️ Model Architecture</h3>
-          <p>Astromer-2 is an improved version of the Astromer model with enhanced capabilities for astronomical time series analysis. It features better handling of irregular sampling, improved attention mechanisms, and more robust embedding generation:</p>
-          <ul>
-            <li><strong>Architecture:</strong> Enhanced Transformer with improved attention</li>
-            <li><strong>Specialization:</strong> Astronomical time series (improved)</li>
-            <li><strong>Input:</strong> Irregularly sampled light curves</li>
-            <li><strong>Output:</strong> High-quality time series embeddings</li>
-            <li><strong>Improvements:</strong> Better irregular sampling handling, enhanced attention</li>
+        <div class="stat-card">
+          <div class="stat-icon github">
+            <i class="fab fa-github"></i>
+          </div>
+          <h3 class="stat-title">Open Source</h3>
+          <p class="stat-description">Full implementation available on GitHub</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon huggingface">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3 class="stat-title">Hugging Face</h3>
+          <p class="stat-description">Pre-trained models ready for inference</p>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <a href="https://arxiv.org/abs/2205.01677" target="_blank" class="btn btn-primary">
+          <i class="fas fa-external-link-alt"></i>
+          View Paper
+        </a>
+        <a href="https://github.com/astromer-science/main-code" target="_blank" class="btn btn-secondary">
+          <i class="fab fa-github"></i>
+          GitHub Repository
+        </a>
+        <a href="https://www.stellardnn.org/projects/astromer/index.html" target="_blank" class="btn btn-secondary">
+          <i class="fas fa-download"></i>
+          Hugging Face Model
+        </a>
+      </div>
+
+      <!-- Content Grid -->
+      <div class="content-grid">
+        <!-- Main Content -->
+        <div class="main-card">
+          <h2 class="card-title">
+            <div class="card-icon">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            Model Overview
+          </h2>
+          <p>Astromer-2 is an enhanced version of the transformer-based model specifically designed for astronomical time series analysis. Building upon Astromer-1, it features improved attention mechanisms and better handling of irregular sampling patterns.</p>
+          
+          <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-primary);">Key Improvements</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
+              <strong>Enhanced Architecture:</strong> Improved transformer design with better attention patterns
+            </li>
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
+              <strong>Better Performance:</strong> Superior handling of irregular sampling and missing data
+            </li>
+            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
+              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
+              <strong>Optimized Training:</strong> More efficient training procedures and convergence
+            </li>
+            <li style="padding: 0.5rem 0;">
+              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
+              <strong>Robust Embeddings:</strong> Higher quality embeddings for downstream tasks
+            </li>
           </ul>
         </div>
 
-        <!-- UMAP Visualization -->
-        <div class="umap-container">
-          <h3 class="title is-5">🎯 Embedding Clustering Visualization</h3>
-          <img src="../../static/images/umap/Astromer%202_umap.png" alt="Astromer-2 UMAP Visualization" style="max-width: 100%; height: auto; border-radius: 8px;">
-          <img src="../../static/images/umap/legend.png" alt="UMAP Legend" style="max-width: 60%; height: auto; border-radius: 8px; margin-top: 1rem;">
-          <p class="is-size-7 has-text-grey mt-2">UMAP visualization of Astromer-2 embeddings showing improved clustering patterns in astronomical time series data</p>
-        </div>
-
-        <!-- Additional Links -->
-        <div class="model-info-card">
-          <h3 class="title is-5">🔗 Additional Resources</h3>
-          <p>
-            <a href="https://www.stellardnn.org/projects/astromer/index.html" target="_blank" class="link-button">Hugging Face Model</a>
-            <a href="../../" target="_blank" class="link-button">Project Home</a>
-          </p>
+        <!-- Sidebar -->
+        <div class="sidebar-card">
+          <h2 class="card-title">
+            <div class="card-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            Technical Details
+          </h2>
+          <ul class="architecture-list">
+            <li>
+              <span class="architecture-label">Architecture</span>
+              <span class="architecture-value">Enhanced Transformer</span>
+            </li>
+            <li>
+              <span class="architecture-label">Input Type</span>
+              <span class="architecture-value">Light Curves</span>
+            </li>
+            <li>
+              <span class="architecture-label">Output</span>
+              <span class="architecture-value">Embeddings</span>
+            </li>
+            <li>
+              <span class="architecture-label">Domain</span>
+              <span class="architecture-value">Astronomy</span>
+            </li>
+            <li>
+              <span class="architecture-label">Sampling</span>
+              <span class="architecture-value">Irregular</span>
+            </li>
+            <li>
+              <span class="architecture-label">Framework</span>
+              <span class="architecture-value">PyTorch</span>
+            </li>
+          </ul>
         </div>
       </div>
-    </section>
+
+      <!-- Visualization -->
+      <div class="visualization-card">
+        <h2 class="card-title">
+          <div class="card-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          Embedding Clustering Visualization
+        </h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">UMAP visualization showing how Astromer-2 embeddings cluster different types of astronomical objects</p>
+        <div style="position: relative; display: inline-block;">
+          <img src="../umap/Astromer2.png" alt="Astromer-2 UMAP Visualization" class="visualization-image">
+          <img src="../umap/legend.png" alt="UMAP Legend" style="position: absolute; top: 10px; right: 10px; max-width: 25%; height: auto; border-radius: 8px; background: rgba(255, 255, 255, 0.9); padding: 8px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+        </div>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">Each point represents a light curve embedding, with colors indicating different astronomical object types</p>
+      </div>
+    </div>
   </body>
 </html>
