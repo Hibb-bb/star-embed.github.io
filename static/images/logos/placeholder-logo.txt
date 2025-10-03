@@ -1,0 +1,14 @@
+# Placeholder Logo Files
+
+This directory contains placeholder logo files for:
+- SkAI
+- CIERA (Northwestern)
+- Northwestern CFMG
+
+Please replace these placeholder files with actual logo images:
+- skai-logo.png
+- ciera-logo.png  
+- cfmg-logo.png
+
+Recommended size: 100x40 pixels or similar aspect ratio
+Format: PNG with transparent background

@@ -353,23 +353,23 @@
       <!-- Hero Section -->
       <div class="hero-section">
         <div class="hero-content">
-          <h1 class="model-title">Moirai Small</h1>
-          <p class="model-subtitle">Foundation Model for Time Series Forecasting</p>
-          <span class="model-tag">Published 2024</span>
+          <h1 class="model-title">MOIRAI-Small</h1>
+          <!-- <p class="model-subtitle">Foundation Model for Time Series Forecasting</p> -->
+          <span class="model-tag">ICML 2024</span>
         </div>
       </div>
 
       <!-- Quick Stats Grid -->
-      <div class="stats-grid">
+      <!-- <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-icon architecture">
             <i class="fas fa-cogs"></i>
           </div>
           <h3 class="stat-title">Architecture</h3>
           <p class="stat-description">Transformer-based foundation model for time series</p>
-        </div>
+        </div> -->
 
-        <div class="stat-card">
+        <!-- <div class="stat-card">
           <div class="stat-icon paper">
             <i class="fas fa-file-alt"></i>
           </div>
@@ -392,24 +392,24 @@
           <h3 class="stat-title">Hugging Face</h3>
           <p class="stat-description">Pre-trained models ready for inference</p>
         </div>
-      </div>
+      </div> -->
 
       <!-- Action Buttons -->
       <div class="action-buttons">
-        <a href="https://arxiv.org/abs/2406.05341" target="_blank" class="btn btn-primary">
+        <a href="https://arxiv.org/abs/2402.02592" target="_blank" class="btn btn-primary">
           <i class="fas fa-external-link-alt"></i>
           View Paper
         </a>
-        <a href="https://github.com/salesforce/moirai" target="_blank" class="btn btn-secondary">
+        <a href="https://github.com/SalesforceAIResearch/uni2ts" target="_blank" class="btn btn-secondary">
           <i class="fab fa-github"></i>
           GitHub Repository
         </a>
-        <a href="https://huggingface.co/Salesforce/moirai-0.1-R-small" target="_blank" class="btn btn-secondary">
+        <a href="https://huggingface.co/Salesforce/moirai-1.0-R-small" target="_blank" class="btn btn-secondary">
           <i class="fas fa-download"></i>
           Hugging Face Model
         </a>
       </div>
-
+      <br>
       <!-- Content Grid -->
       <div class="content-grid">
         <!-- Main Content -->
@@ -420,25 +420,24 @@
             </div>
             Model Overview
           </h2>
-          <p>Moirai Small is a foundation model for time series forecasting that leverages transformer architecture with patch-based tokenization. It demonstrates strong performance across diverse forecasting tasks with efficient inference capabilities.</p>
+          <p>MOIRAI is a foundation model for time series forecasting that leverages transformer architecture.
+            It can handle arbitrary number of covariates via its unique any-variate encoding and any-variate attention mechanism.
+            MOIRAI is trained on probabilistic forecasting objective, with the target distribution being a mixture of Gaussian, T-student, log-normal distributions.
+          </p>
           
           <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-primary);">Key Features</h3>
           <ul style="list-style: none; padding: 0;">
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Patch-based Tokenization:</strong> Efficient representation of time series data
+              <strong>Any-variate Encoding:</strong> Concatenate all covariates into a single univariate time series
             </li>
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Foundation Model:</strong> Pre-trained on large-scale time series data
+              <strong>Multi-variate Foundation Model:</strong> Pre-trained on large-scale time series data with various number of covariates
             </li>
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Multi-scale Forecasting:</strong> Handles various forecast horizons
-            </li>
-            <li style="padding: 0.5rem 0;">
-              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Efficient Inference:</strong> Optimized for production deployment
+              <strong>Zero-Shot Performance:</strong> Outperforms domain-specific baselines even in zero-shot settings
             </li>
           </ul>
         </div>
@@ -449,7 +448,7 @@
             <div class="card-icon">
               <i class="fas fa-cogs"></i>
             </div>
-            Technical Details
+            <span style="font-size: 1.2rem;">Technical Details</span>
           </h2>
           <ul class="architecture-list">
             <li>
@@ -458,11 +457,11 @@
             </li>
             <li>
               <span class="architecture-label">Input Type</span>
-              <span class="architecture-value">Time Series</span>
+              <span class="architecture-value">Multi-variate</span>
             </li>
             <li>
               <span class="architecture-label">Output</span>
-              <span class="architecture-value">Forecasts</span>
+              <span class="architecture-value">Target Distribution</span>
             </li>
             <li>
               <span class="architecture-label">Domain</span>
@@ -470,11 +469,7 @@
             </li>
             <li>
               <span class="architecture-label">Size</span>
-              <span class="architecture-value">Small</span>
-            </li>
-            <li>
-              <span class="architecture-label">Framework</span>
-              <span class="architecture-value">PyTorch</span>
+              <span class="architecture-value">14M</span>
             </li>
           </ul>
         </div>

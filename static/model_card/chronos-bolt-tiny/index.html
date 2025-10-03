@@ -354,61 +354,26 @@
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="model-title">Chronos Bolt Tiny</h1>
-          <p class="model-subtitle">Lightweight Foundation Model for Time Series</p>
           <span class="model-tag">Published 2024</span>
-        </div>
-      </div>
-
-      <!-- Quick Stats Grid -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon architecture">
-            <i class="fas fa-cogs"></i>
-          </div>
-          <h3 class="stat-title">Architecture</h3>
-          <p class="stat-description">Compact transformer optimized for efficiency</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon paper">
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <h3 class="stat-title">Research Paper</h3>
-          <p class="stat-description">Published with efficiency benchmarks</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon github">
-            <i class="fab fa-github"></i>
-          </div>
-          <h3 class="stat-title">Open Source</h3>
-          <p class="stat-description">Full implementation available on GitHub</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon huggingface">
-            <i class="fas fa-robot"></i>
-          </div>
-          <h3 class="stat-title">Hugging Face</h3>
-          <p class="stat-description">Pre-trained models ready for inference</p>
         </div>
       </div>
 
       <!-- Action Buttons -->
       <div class="action-buttons">
-        <a href="https://arxiv.org/abs/2403.07815" target="_blank" class="btn btn-primary">
+        <a href="https://aws.amazon.com/blogs/machine-learning/fast-and-accurate-zero-shot-forecasting-with-chronos-bolt-and-autogluon/" target="_blank" class="btn btn-primary">
           <i class="fas fa-external-link-alt"></i>
-          View Paper
+          View Project Blog
         </a>
         <a href="https://github.com/amazon-science/chronos-forecasting" target="_blank" class="btn btn-secondary">
           <i class="fab fa-github"></i>
           GitHub Repository
         </a>
-        <a href="https://huggingface.co/amazon/chronos-t5-tiny" target="_blank" class="btn btn-secondary">
+        <a href="https://huggingface.co/amazon/chronos-bolt-tiny" target="_blank" class="btn btn-secondary">
           <i class="fas fa-download"></i>
           Hugging Face Model
         </a>
       </div>
+      <br>
 
       <!-- Content Grid -->
       <div class="content-grid">
@@ -420,13 +385,21 @@
             </div>
             Model Overview
           </h2>
-          <p>Chronos Bolt Tiny is a lightweight variant of the Chronos foundation model, designed for efficient time series forecasting with reduced computational requirements while maintaining strong performance.</p>
-          
+          <p>
+          Chronos-Bolt is an improved variant of the original Chronos models (from the paper “Chronos: Learning the Language of
+          Time Series”).
+          It is designed for time series forecasting using the same discrete-token approach as Chronos (scaling + quantization →
+          transformer language model).
+          Compared to Chronos, Bolt is optimized for speed and efficiency:
+          It replaces the autoregressive decoding (one token at a time) with a non-autoregressive “parallel” prediction mechanism.
+          This allows Chronos-Bolt to generate full forecast horizons in a single forward pass, making inference orders of
+          magnitude faster.          
+          </p>
           <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-primary);">Key Features</h3>
           <ul style="list-style: none; padding: 0;">
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Efficient Design:</strong> Optimized for speed and memory usage
+              <strong>Efficient Design:</strong> 80x faster than Chronos-Tiny during inference
             </li>
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
@@ -434,11 +407,7 @@
             </li>
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Fast Inference:</strong> Quick predictions with minimal latency
-            </li>
-            <li style="padding: 0.5rem 0;">
-              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Foundation Model:</strong> Pre-trained on large-scale data
+              <strong>Fast Inference:</strong> One-shot prediction to replace autoregressive decoding
             </li>
           </ul>
         </div>
@@ -449,20 +418,20 @@
             <div class="card-icon">
               <i class="fas fa-cogs"></i>
             </div>
-            Technical Details
+            <span style="font-size: 1.2rem;">Technical Details</span>
           </h2>
           <ul class="architecture-list">
             <li>
               <span class="architecture-label">Architecture</span>
-              <span class="architecture-value">Compact Transformer</span>
+              <span class="architecture-value">T5 Transformer</span>
             </li>
             <li>
               <span class="architecture-label">Input Type</span>
-              <span class="architecture-value">Time Series</span>
+              <span class="architecture-value">Univariate</span>
             </li>
             <li>
               <span class="architecture-label">Output</span>
-              <span class="architecture-value">Forecasts</span>
+              <span class="architecture-value">Target Distribution</span>
             </li>
             <li>
               <span class="architecture-label">Domain</span>
@@ -470,11 +439,7 @@
             </li>
             <li>
               <span class="architecture-label">Size</span>
-              <span class="architecture-value">Tiny</span>
-            </li>
-            <li>
-              <span class="architecture-label">Framework</span>
-              <span class="architecture-value">PyTorch</span>
+              <span class="architecture-value">9M</span>
             </li>
           </ul>
         </div>

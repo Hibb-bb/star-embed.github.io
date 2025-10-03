@@ -9,7 +9,9 @@
           content="Benchmarking Time Series Foundation Models on Astronomical Observations of Variable Starts">
     <meta name="keywords" content="Light curve analysis, time series foundation model, time series evaluation, astrophysics data analysis.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> StarEmbed: Benchmarking Time Series Foundation Models on Astronomical Observations of Variable Starts</title>
+    <title> StarEmbed: Benchmarking Time Series Foundation Models on 
+      <br>
+      Astronomical Observations of Variable Starts</title>
 
     <link rel="icon" href="./static/images/star_logos/milky2.jpg"> 
 
@@ -28,49 +30,15 @@
     <script src="./static/js/bulma-carousel.min.js"></script>
     <script src="./static/js/bulma-slider.min.js"></script>
     <script src="./static/js/index.js"></script>
+    <script src="./static/js/header-loader.js"></script>
+    
   </head>
   <body>
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-      <div class="navbar-menu">
-        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              More Research
-            </a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item" href="https://huggingface.co/datasets/123anonymous123/StarEmbed">
-                <b>StarEmbed</b> <span style="font-size:18px; display: inline; margin-left: 5px;">🔥</span>
-              </a>
-              <!-- <a class="navbar-item" href="https://videommmu.github.io/">
-                <b>Video-MMMU</b> <span style="font-size:18px; display: inline; margin-left: 5px;">🔥</span>
-              </a>
-              <a class="navbar-item" href="https://tiger-ai-lab.github.io/MAmmoTH/">
-                MAmmoTH
-              </a>
-              <a class="navbar-item" href="https://osu-nlp-group.github.io/TableLlama/">
-                TableLlama
-              </a>
-              <a class="navbar-item" href="https://osu-nlp-group.github.io/MagicBrush/">
-                MagicBrush
-              </a>
-              <a class="navbar-item" href="https://osu-nlp-group.github.io/Mind2Web/">
-                Mind2Web
-              </a> -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+    <!-- Header will be loaded here -->
+    <div id="header-container"></div>
 
-    <section class="hero">
+    <section class="hero" style="background-color: #ffffff;">
       <div class="hero-body">
         <div class="container is-max-desktop">
           <div class="columns is-centered">
@@ -154,7 +122,7 @@
                     </a>
                   </span>
                   <span class="link-block">
-                    <a href="#leaderboard" class="external-link button is-normal is-rounded is-dark">
+                    <a href="leaderboard.html" class="external-link button is-normal is-rounded is-dark">
                       <span class="icon has-text-white">
                         <i class="fa-solid fa-trophy"></i>
                       </span>
@@ -192,679 +160,75 @@
         </div>
       </div>
     </section>
+    <!-- Main Content Section - Overview (Default) -->
+    <section id="overview-section" style="background-color: #ffffff; margin-top:0em">
+      <div class="container py-lg-8 gx-lg-8 gx-xl-12 py-md-4">
+        <div class="container">
+          <div class="content" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: 2.75em; margin-top: 0em; font-weight: 600;">Overview</h2>
+            <p class="lead fs-lg">
+                StarEmbed is <strong>the first 
+                                  <a class="nav-link" href="leaderboard.html" style="font-size: 1em; color: rgb(0, 102, 255);" >benchmark</a>
+                   to test modern time series foundation models (TSFMs) on astronomical</strong>  data.</strong> 
+                The ultimate goal of this project is to explore the potential of TSFMs in astronomical data analysis.
+                These models are powerful tools trained on massive datasets, but until now they have never been evaluated on stellar light curves in a systematic way.
+                For evaluation, we compare these models to traditional astrophysics methods that extracts light curve features on (1) embedding quality, (2) light curve classification, and (3) out-of-distribution detection.
+            </p>
 
-    <section class="hero teaser">
-      <div class="container is-max-desktop has-text-centered">
-        <img src="static/images/star-embed/institutions.jpg" alt="geometric reasoning">
-        This project is supported by the 
-        <a href="https://skai-institute.org/">SkAI Institute</a>,
-        <a href="https://genai.northwestern.edu/index.html">CMFG</a>
-        , and
-        <a href="https://ciera.northwestern.edu/">CIERA 
-        </a>
-        at Northwestern University.
-        <br>
-        <p>Overview of the StarEmbed Benchmark. StarEmbed presents the following evaluations:
-          1) <b>Unsupervised Clustering</b>: using the embeddings of time series foundation models;
-          2) <b>Light Curve Classification</b>: via linear, MLP, k-NN and random forest probing;
-          3) <b>Out-of-distribution Detection</b>: ADD SOME TEXT.
-        </p>
-      </div>
+            <blockquote>
+              <section>
+                <h4 class="display-7 mb-3" style="margin-top: 0.5em;">Contributions:</h4>
+                <ul>
+                  <li><strong>Benchmarking.</strong> StarEmbed is the first benchmark to test modern time series foundation models (TSFMs) on astronomical data.</li>
+                  <li><strong>Open Source.</strong> We publish a comprehensive evaluation framework and a large-scale dataset for benchmarking TSFMs on astronomical data.</li>
+                  <li><strong>Multidisciplinary.</strong> This project is done by a collaboration between the Astronomy and Computer Science departments at Northwestern University, promoting AI4Science in Astronomy.</li>
+                </ul>
     </section>
+            </blockquote>
+    <hr style="margin-top: 1em; margin-bottom: 1em; width: 160%; margin-left: auto; margin-right: auto;">
 
-    <section class="section">
-      <div class="container" style="margin-bottom: 2vh;">
-        <!-- Abstract. -->
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">🔔News</h2>
-            <div class="content has-text-justified">
-              <p>
-                <b>🔥[Oct 2025] Hong-yu is going to present our project "StarEmbed-GPT: Toward a Foundation Model for General-purpose Inference on Variable Stars", at <a href="https://www.openhackathons.org/s/oac-summit">2025 Open Accelerated Computing Summit</a>.</b>
-              </p>
-              <p>
-                <b>🔥[Sep 2025] Hong-yu gives a talk at <a href="https://www.openskai-conference.org/schedule/talk-titles-and-abstracts/">Open SkAI 2025,  Chicago</a>. "StarEmbed-GPT: Torward a foundation model for general-purpose inference on variable stars".</b>
-              </p>
-              <!-- <p>
-                <b>🔥[]: Our evaluation server for the test set is now available on <a href="https://eval.ai/web/challenges/challenge-page/2179/overview"><b>EvalAI</b></a>. We welcome all submissions and look forward to your participation! 😆</b>
-              </p> -->
-          </div>
-            <h2 class="title is-3">Introduction</h2>
-            <div class="content has-text-justified">
-              <p>
-                Time series foundation models (TSFMs) are increasingly being adopted as highly-
-                capable general-purpose time series representation learners. Although their training
-                corpora are vast, they exclude astronomical time series data. Observations of stars
-                produce peta-scale time series with unique challenges including irregular sampling
-                and heteroskedasticity. We introduce StarEmbed, the first public benchmark for
-                rigorous and standardized evaluation of state-of-the-art TSFMs on stellar time se-
-                ries observations (“light curves”). We benchmark on three scientifically-motivated
-                downstream tasks: unsupervised clustering, supervised classification, and out-of-
-                distribution source detection. StarEmbed integrates a catalog of expert-vetted
-                labels with multi-variate light curves from the Zwicky Transient Facility, yielding
-                ~40k hand-labeled light curves spread across seven astrophysical classes. We eval-
-                uate the zero-shot representation capabilities of three TSFMs (Moirai, Chronos,
-                Chronos-Bolt) and a domain-specific transformer (Astromer) against hand-
-                crafted feature extraction, the long-standing baseline in the astrophysics literature.
-                Our results demonstrate that these TSFMs, especially the Chronos models, which
-                are trained on data completely unlike the astronomical observations, can outperform
-                established astrophysics-specific baselines in some tasks and effectively generalize
-                to entirely new data. In particular, TSFMs deliver state-of-the-art performance on
-                our out-of-distribution source detection benchmark. With the first benchmark of
-                TSFMs on astronomical time series data, we test the limits of their generalization
-                and motivate a paradigm shift in time-domain astronomy from using task-specific,
-                fully supervised pipelines toward adopting generic foundation model representa-
-                tions for the analysis of peta-scale datasets from forthcoming observatories.
-              </p>
-              <!-- <img src="static/images/MMMU_Tracking_Figure.png" alt="algebraic reasoning" width="100%">
-              <br> -->
-            </div>
-          </div>
-        </div>
-        <!--/ Abstract. -->
-    </div>
-    </section>
 
-    <!-- DATASET SECTION -->
-    <section class="hero is-light is-small">
-      <div class="hero-body has-text-centered">
-        <h1 class="title is-1 mmmu">
-          <img src="static/images/star_logos/milky2.jpg" alt="Logo" class="mmmu-logo"/>
-          <span class="mmmu">Dataset and Challenges</span>
-        </h1>
-      </div>
-    </section>
+            <!-- <div class="pt-10">
+              <h2 class="fs-16 text-uppercase text-line text-primary mb-3">What is StarEmbed?</h2>
+              <h4 style="font-size: 1.375em; font-weight: 400; line-height: 1.8em;">
+                StarEmbed is <strong>the first benchmark to test modern time series foundation models (TSFMs) on astronomical data.</strong> These models are powerful tools trained on massive datasets, but until now they have never been evaluated on stellar light curves—the brightness measurements of stars—which are huge in scale and come with unique challenges like irregular timing and noisy measurements.
+              </h4>
 
-    <section class="section">
-      <div class="container">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Dataset & Statistics</h2>
-            <div class="content has-text-justified">
-              <p>
-                The benchmark dataset includes multi-variate time-series observations of periodic variable stars. The flux is presented in magnitudes (an astronomy specific unit), while the time is recorded as the modified Julian date. 
-                The observations are from the 
-                <a href="https://ui.adsabs.harvard.edu/abs/2019PASP..131a8002B/abstract/">Zwicky Transient Facility (ZTF)</a>, 
-                which repeatedly scans all stars visible from the Northern hemisphere every few days. ZTF observes in three different passbands, g, r and i
-                roughly corresponding to visible green, visible red, and (outside the visible) infrared light, respectively. 
-                We use observations from ZTF data release 23 (DR23) which spans a duration of ~6.5 yr and contains billions of light curves. 
-                While many labels for periodic variable stars exist within the literature, the vast majority of these labels are derived from low-capacity machine learning models. 
-                A careful selection of light curves is therefore warranted to prevent significant label noise within the benchmark.  
-                We thus avoid these catalogs in establishing this benchmark.
-                <!-- \footnote{Most ZTF sources have very few or no observations in $i$ band and we therefore exclude it from our analysis. } (see \Cref{fig:lc})  -->
-                <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: 2rem auto;">
-                  <caption style="caption-side: top; text-align: center; font-weight: bold; margin-bottom: 1rem;">
-                    Number of periodic variable stars in our dataset across each class and in each split
-                  </caption>
-                  <thead>
-                    <tr>
-                      <th>Class</th>
-                      <th>EW</th>
-                      <th>EA</th>
-                      <th>RRab</th>
-                      <th>RRc</th>
-                      <th>RRd</th>
-                      <th>RS CVn</th>
-                      <th>LPV</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><strong>Train</strong></td>
-                      <td>18,998</td>
-                      <td>2,889</td>
-                      <td>1,386</td>
-                      <td>3,233</td>
-                      <td>298</td>
-                      <td>942</td>
-                      <td>255</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Validation</strong></td>
-                      <td>2,690</td>
-                      <td>410</td>
-                      <td>194</td>
-                      <td>463</td>
-                      <td>42</td>
-                      <td>134</td>
-                      <td>35</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Test</strong></td>
-                      <td>5,387</td>
-                      <td>818</td>
-                      <td>397</td>
-                      <td>926</td>
-                      <td>83</td>
-                      <td>276</td>
-                      <td>70</td>
-                    </tr>
-                    <tr style="border-top: 2px solid #000;">
-                      <td><strong>Total after cuts</strong></td>
-                      <td><strong>27,075</strong></td>
-                      <td><strong>4,117</strong></td>
-                      <td><strong>1,977</strong></td>
-                      <td><strong>4,622</strong></td>
-                      <td><strong>423</strong></td>
-                      <td><strong>1,352</strong></td>
-                      <td><strong>360</strong></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </p>
-              <p>
-                One can observe that not only does the label distribution is highly imbalanced, but also the number of observations is limited (40k labels across 7 classes with over billions of light curves).
-              </p>
-            </div>
-            <h2 class="title is-3">Challenges</h2>
-            <div class="content has-text-justified">
-              <p>
-                Several challenges are posted in analyzing the light-curve data, such as the massive data scale, limited labels, irregular data points and various of noises.
-                Example ZTF light curves illustrating unique characteristics of astronomical time series, including multiple passbands, large observational gaps, and heteroskedastic uncertainties.
-                <em>Top panel</em>: Observed light curve of a periodic variable exhibiting typical characteristics of the observations. 
-                The inset shows the full ~6.5 year duration of ZTF observations.
-                <em>Lower panels</em>: Phase-folded light curves highlighting the differing periodic patterns in three different classes. 
-                Note that most stars have few i passband observations so we exclude these data from our analysis.            
-              </p>
-              <p>
-                <img src="static/images/star-embed/challenges.jpg" alt="Challenges in analyzing light-curve data" width="100%">
-              </p>
-              <br>
-              <p>
-                In light curve datasets, very often the data points are irregularly sampled, sometimes due to the seasonal gaps, bad weather conditions, etc.
-                Also, the data points are often accompanied by heteroskedasticity, which means the variance of the data points is not constant.
-                These challenges make the analysis of light curves more difficult.
-              </p>
-            </div>          
-          </div>
-        </div>
-
-        <!-- <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">Comparisons with Existing Benchmarks</h2>
-            <div class="content has-text-justified">
-              <p>
-                To further distinguish the difference between <i>dataset</i> and other existing ones, we elaborate the benchmark details in Figure.
-                From the <i>breadth</i> perspective, the prior benchmarks are heavily focused on daily knowledge and common sense.
-                The covered image format is also limited. Our benchmark aims to cover college-level knowledge with 30 image formats including diagrams,
-                tables, charts, chemical structures, photos, paintings, geometric shapes, music sheets, medical images, etc.
-                In the <i>depth</i> aspect, the previous benchmarks normally require commonsense knowledge or simple physical or temporal reasoning.
-                In contrast, our benchmark requires deliberate reasoning with college-level subject knowledge.
-              </p>
-              <div class="content has-text-centered">
-                <img src="static/images/compare.Jpeg" alt="algebraic reasoning" class="center">
-                <p> Sampled MMMU examples from each discipline. The questions and images need expert-level knowledge to understand and reason.</p>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">Statistics</h2>
-            <div class="carousel results-carousel">
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/mmmu_subject_distribution.Jpeg" alt="algebraic reasoning" width="95%"/>
-                  <p> Sampled MMMU examples from each discipline. The questions and images need expert-level knowledge to understand and reason.</p>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/statistics.png" alt="arithmetic reasoning" width="40%"/>
-                  <p> Key statistics of the MMMU benchmark</p>
-                </div>
-              </div>
-              <div class="box m-5">
-                <div class="content has-text-centered">
-                  <img src="static/images/image_type_count.png" alt="arithmetic reasoning" width="80%"/>
-                  <p> Distribution of image types in the MMMU dataset</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
-      </div>
-    </section>
-
-    <!-- RESULTS SECTION -->
-    <section class="hero is-light is-small">
-      <div class="hero-body has-text-centered">
-        <h1 class="title is-1 mmmu">Experimental Results</h1>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <!-------------------------------------------------------------------- RESULTS SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3" id="leaderboard">Leaderboard</h2>
-            <div class="content has-text-justified">
-              <p>
-                DESCRIPTION OF LEADERBOARD
-              </p>
-            </div>
-            <br>
-            <!-- <div class="model-labels-container">
-              <span class="leaderboard-label tsfm">Time Series Foundation Models</span>
-              <span class="leaderboard-label baseline">Baseline</span>
+              <h2 class="fs-16 text-uppercase text-line text-primary mb-3" style="margin-top: 3em;">WHY DO WE CARE?</h2>
+              <h4 style="font-size: 1.375em; font-weight: 400; line-height: 1.8em;">
+                Foundation models present novel capabilities for astronomical data analysis that are poorly understood. Nonetheless, they are being deployed at scale across various domains, and their potential for transforming astronomy research is immense.
+              </h4>
             </div> -->
-            <br>
-            <div class="content has-text-centered">
-              <p>
-                Click on Clustering (K-Means), Clustering (Ward), Classification (MLP), Classification (Logistic), Classification (RF) and Classification (k-NN) to expand detailed results.
-              </p>
-            </div>
-            <div class="leaderboard-container">
-              <div class="content has-text-right is-size-7 has-text-grey">
-                <p>Last updated: 09/30/2025</p>
-              </div>
-              
-              <!-- Clustering Table -->
-              <div class="table-wrapper" style="margin-bottom: 2rem;">
-                <h3 class="title is-4">Clustering Results</h3>
-                <table id="clustering-table">
-                  <thead>
-                    <!-- Row 1: Main groups -->
-                    <tr>
-                      <th colspan="3" class="reset-cell clickable" style="text-align:center;">Reset</th>
-                      <th colspan="3" class="clickable" style="text-align:center;">K-Means</th>
-                      <th colspan="3" class="clickable" style="text-align:center;">Ward</th>
-                    </tr>
-                    
-                    <!-- Row 2: Column headers -->
-                    <tr>
-                      <!-- Reset columns -->
-                      <th class="sortable clickable" data-sort="string">Name</th>
-                      <th class="clickable" data-sort="string">Size</th>
-                      <th class="sortable clickable" data-sort="date">Date</th>
-                      
-                      <!-- K-Means columns -->
-                      <th class="sortable clickable" data-sort="number" data-metric="kmeans_nmi">NMI</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="kmeans_ari">ARI</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="kmeans_f1">F1</th>
-                      
-                      <!-- Ward columns -->
-                      <th class="sortable clickable" data-sort="number" data-metric="ward_nmi">NMI</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="ward_ari">ARI</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="ward_f1">F1</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Populated dynamically -->
-                  </tbody>
-                </table>
-                <p class="test-desc">
-                  Clustering results using unsupervised heads (K-Means, Ward) with metrics (NMI, ARI, F1).
-                  The best in each column is <b>bold</b>, second best is <u>underlined</u>.
+
+            <!-- News Section -->
+            <div style="margin-top: 4em;">
+              <h2 style="font-size: 2.75em; font-weight: 600;">News</h2>
+              <div style="margin-top: 2em;">
+                <p style="font-size: 1.25em; line-height: 1.7; margin-bottom: 1.5em;">
+                  🎉 <strong>[Oct 2025]</strong>
+                  <br>Hong-yu is going to present our project "StarEmbed-GPT: Toward a Foundation Model for General-purpose Inference on Variable Stars", at <a href="https://www.openhackathons.org/s/oac-summit">2025 Open Accelerated Computing Summit</a>.
+                </p>
+                <p style="font-size: 1.25em; line-height: 1.7; margin-bottom: 1.5em;">
+                  🎉 <strong>[Sep 2025]</strong>  
+                  <br>Hong-yu gives a talk at <a href="https://www.openskai-conference.org/schedule/talk-titles-and-abstracts/">Open SkAI 2025, Chicago</a>. "StarEmbed-GPT: Toward a foundation model for general-purpose inference on variable stars".
                 </p>
               </div>
-
-              <!-- Classification Table -->
-              <div class="table-wrapper">
-                <h3 class="title is-4">Classification Results</h3>
-                <table id="classification-table">
-                  <thead>
-                    <!-- Row 1: Main groups -->
-                    <tr>
-                      <th colspan="3" class="reset-cell clickable" style="text-align:center;">Reset</th>
-                      <th colspan="4" class="clickable" style="text-align:center;">MLP</th>
-                      <th colspan="4" class="clickable" style="text-align:center;">k-NN</th>
-                      <th colspan="4" class="clickable" style="text-align:center;">Logistic</th>
-                      <th colspan="4" class="clickable" style="text-align:center;">Random Forest</th>
-                    </tr>
-                    
-                    <!-- Row 2: Column headers -->
-                    <tr>
-                      <!-- Reset columns -->
-                      <th class="sortable clickable" data-sort="string">Name</th>
-                      <th class="clickable" data-sort="string">Size</th>
-                      <th class="sortable clickable" data-sort="date">Date</th>
-                      
-                      <!-- MLP columns -->
-                      <th class="sortable clickable" data-sort="number" data-metric="mlp_accuracy">Acc.</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="mlp_recall">Recall</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="mlp_precision">Precision</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="mlp_f1">F1</th>
-                      
-                      <!-- k-NN columns -->
-                      <th class="sortable clickable" data-sort="number" data-metric="knn_accuracy">Acc.</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="knn_recall">Recall</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="knn_precision">Precision</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="knn_f1">F1</th>
-                      
-                      <!-- Logistic columns -->
-                      <th class="sortable clickable" data-sort="number" data-metric="logistic_accuracy">Acc.</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="logistic_recall">Recall</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="logistic_precision">Precision</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="logistic_f1">F1</th>
-                      
-                      <!-- Random Forest columns -->
-                      <th class="sortable clickable" data-sort="number" data-metric="rf_accuracy">Acc.</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="rf_recall">Recall</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="rf_precision">Precision</th>
-                      <th class="sortable clickable" data-sort="number" data-metric="rf_f1">F1</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Populated dynamically -->
-                  </tbody>
-                </table>
-                <p class="test-desc">
-                  Classification results using simple supervised heads (MLP, k-NN, Logistic, Random Forest) with metrics (Accuracy, Recall, Precision, F1).
-                  The best in each column is <b>bold</b>, second best is <u>underlined</u>.
-                </p>
-              </div>
-              
-              <script>
-                // Load StarEmbed leaderboard data from JSON
-                document.addEventListener('DOMContentLoaded', function() {
-                  loadStarEmbedData();
-                });
-
-                function loadStarEmbedData() {
-                  fetch('./leaderboard_data.json')
-                    .then(response => {
-                      if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                      }
-                      return response.json();
-                    })
-                    .then(data => {
-                      console.log('StarEmbed data loaded successfully:', data);
-                      renderClusteringTable(data.leaderboardData);
-                      renderClassificationTable(data.leaderboardData);
-                    })
-                    .catch(error => {
-                      console.error('Error loading StarEmbed data:', error);
-                      document.querySelector('#clustering-table tbody').innerHTML = `
-                        <tr>
-                          <td colspan="9">Error loading data: ${error.message}</td>
-                        </tr>
-                      `;
-                      document.querySelector('#classification-table tbody').innerHTML = `
-                        <tr>
-                          <td colspan="19">Error loading data: ${error.message}</td>
-                        </tr>
-                      `;
-                    });
-                }
-
-                function renderClusteringTable(models) {
-                  const tbody = document.querySelector("#clustering-table tbody");
-                  
-                  // Prepare data for styling
-                  const clusteringScores = prepareClusteringScores(models);
-
-                  tbody.innerHTML = models.map((model, index) => {
-                    const nameCell = getModelNameCell(model);
-
-                    return `
-                      <tr class="${model.info.type}">
-                        <td>${nameCell}</td>
-                        <td>${model.info.size}</td>
-                        <td>${model.info.date}</td>
-                        <td>${applyStyle(model.clustering.kmeans.nmi, clusteringScores.kmeans_nmi[index])}</td>
-                        <td>${applyStyle(model.clustering.kmeans.ari, clusteringScores.kmeans_ari[index])}</td>
-                        <td>${applyStyle(model.clustering.kmeans.f1, clusteringScores.kmeans_f1[index])}</td>
-                        <td>${applyStyle(model.clustering.ward.nmi, clusteringScores.ward_nmi[index])}</td>
-                        <td>${applyStyle(model.clustering.ward.ari, clusteringScores.ward_ari[index])}</td>
-                        <td>${applyStyle(model.clustering.ward.f1, clusteringScores.ward_f1[index])}</td>
-                      </tr>
-                    `;
-                  }).join('');
-                }
-
-                function renderClassificationTable(models) {
-                  const tbody = document.querySelector("#classification-table tbody");
-                  
-                  // Prepare data for styling
-                  const classificationScores = prepareClassificationScores(models);
-
-                  tbody.innerHTML = models.map((model, index) => {
-                    const nameCell = getModelNameCell(model);
-
-                    return `
-                      <tr class="${model.info.type}">
-                        <td>${nameCell}</td>
-                        <td>${model.info.size}</td>
-                        <td>${model.info.date}</td>
-                        <td>${applyStyle(model.classification.mlp.accuracy, classificationScores.mlp_accuracy[index])}</td>
-                        <td>${applyStyle(model.classification.mlp.recall, classificationScores.mlp_recall[index])}</td>
-                        <td>${applyStyle(model.classification.mlp.precision, classificationScores.mlp_precision[index])}</td>
-                        <td>${applyStyle(model.classification.mlp.f1, classificationScores.mlp_f1[index])}</td>
-                        <td>${applyStyle(model.classification.knn.accuracy, classificationScores.knn_accuracy[index])}</td>
-                        <td>${applyStyle(model.classification.knn.recall, classificationScores.knn_recall[index])}</td>
-                        <td>${applyStyle(model.classification.knn.precision, classificationScores.knn_precision[index])}</td>
-                        <td>${applyStyle(model.classification.knn.f1, classificationScores.knn_f1[index])}</td>
-                        <td>${applyStyle(model.classification.logistic.accuracy, classificationScores.logistic_accuracy[index])}</td>
-                        <td>${applyStyle(model.classification.logistic.recall, classificationScores.logistic_recall[index])}</td>
-                        <td>${applyStyle(model.classification.logistic.precision, classificationScores.logistic_precision[index])}</td>
-                        <td>${applyStyle(model.classification.logistic.f1, classificationScores.logistic_f1[index])}</td>
-                        <td>${applyStyle(model.classification.rf.accuracy, classificationScores.rf_accuracy[index])}</td>
-                        <td>${applyStyle(model.classification.rf.recall, classificationScores.rf_recall[index])}</td>
-                        <td>${applyStyle(model.classification.rf.precision, classificationScores.rf_precision[index])}</td>
-                        <td>${applyStyle(model.classification.rf.f1, classificationScores.rf_f1[index])}</td>
-                      </tr>
-                    `;
-                  }).join('');
-                }
-
-                function prepareClusteringScores(data) {
-                  const scores = {};
-                  const metrics = ['kmeans_nmi', 'kmeans_ari', 'kmeans_f1', 'ward_nmi', 'ward_ari', 'ward_f1'];
-                  
-                  metrics.forEach(metric => {
-                    const [method, metricName] = metric.split('_');
-                    const values = data.map(row => {
-                      const value = row.clustering[method][metricName];
-                      return value === '' ? null : parseFloat(value);
-                    }).filter(v => v !== null);
-                    
-                    if (values.length > 0) {
-                      const sortedValues = [...new Set(values)].sort((a, b) => b - a);
-                      scores[metric] = data.map(row => {
-                        const value = row.clustering[method][metricName];
-                        if (value === '' || value === null) return -1;
-                        return sortedValues.indexOf(parseFloat(value));
-                      });
-                    } else {
-                      scores[metric] = data.map(() => -1);
-                    }
-                  });
-                  
-                  return scores;
-                }
-
-                function prepareClassificationScores(data) {
-                  const scores = {};
-                  const metrics = ['mlp_accuracy', 'mlp_recall', 'mlp_precision', 'mlp_f1', 
-                                 'knn_accuracy', 'knn_recall', 'knn_precision', 'knn_f1',
-                                 'logistic_accuracy', 'logistic_recall', 'logistic_precision', 'logistic_f1',
-                                 'rf_accuracy', 'rf_recall', 'rf_precision', 'rf_f1'];
-                  
-                  metrics.forEach(metric => {
-                    const [method, metricName] = metric.split('_');
-                    const values = data.map(row => {
-                      const value = row.classification[method][metricName];
-                      return value === '' ? null : parseFloat(value);
-                    }).filter(v => v !== null);
-                    
-                    if (values.length > 0) {
-                      const sortedValues = [...new Set(values)].sort((a, b) => b - a);
-                      scores[metric] = data.map(row => {
-                        const value = row.classification[method][metricName];
-                        if (value === '' || value === null) return -1;
-                        return sortedValues.indexOf(parseFloat(value));
-                      });
-                    } else {
-                      scores[metric] = data.map(() => -1);
-                    }
-                  });
-                  
-                  return scores;
-                }
-
-                function applyStyle(value, rank) {
-                  if (value === undefined || value === null || value === '') return '-';
-                  if (rank === 0) return `<b>${value}</b>`;
-                  if (rank === 1) return `<span style="text-decoration: underline;">${value}</span>`;
-                  return value;
-                }
-
-                function getModelNameCell(model) {
-                  // Map model names to their corresponding model card paths
-                  const modelCardMap = {
-                    'Hand-crafted Features': 'static/model_card/hand-crafted-features/',
-                    'Chronos-tiny': 'static/model_card/chronos/',
-                    'Chronos-Bolt-tiny': 'static/model_card/chronos-bolt-tiny/',
-                    'Moirai-small': 'static/model_card/moirai-small/',
-                    'Astromer-1': 'static/model_card/astromer-1/',
-                    'Astromer-2': 'static/model_card/astromer-2/',
-                    'Random Embeddings': 'static/model_card/random-embeddings/'
-                  };
-
-                  const modelCardPath = modelCardMap[model.info.name];
-                  
-                  if (modelCardPath) {
-                    return `<a href="${modelCardPath}" target="_blank"><b>${model.info.name}</b></a>`;
-                  } else {
-                    // Fallback to original link if available, otherwise just bold text
-                    return model.info.link && model.info.link.trim() !== '' ?
-                      `<a href="${model.info.link}" target="_blank"><b>${model.info.name}</b></a>` :
-                      `<b>${model.info.name}</b>`;
-                  }
-                }
-              </script>
-
-              <!-- <div class="table-wrapper">
-                <table id="mmmu-table">
-                  <thead>
-                    <tr>
-                      <th colspan="3" class="reset-cell clickable" style="text-align: center;">Reset</th>
-                      <th class="pro-details-cell clickable" colspan="1">MMMU-Pro</th>
-                      <th class="val-details-cell clickable" colspan="1">MMMU(Val)</th>
-                      <th class="test-details-cell clickable" colspan="1">MMMU(Test)</th>
-                    </tr>
-                    <tr>
-                      <th class="sortable clickable" data-sort="string">Name</th>
-                      <th class="clickable" data-sort="string">Size</th>
-                      <th class="sortable clickable" data-sort="date">Date</th>
-                      <th class="sortable clickable pro-overall" data-sort="number">Overall</th>
-                      <th class="hidden pro-details sortable clickable" data-sort="number">Vision</th>
-                      <th class="hidden pro-details sortable clickable" data-sort="number">Standard</th>
-                      <th class="sortable clickable val-overall" data-sort="number">Overall</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">Art & Design</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">Business</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">Science</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">Health & Medicine</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">Human. & Social Sci.</th>
-                      <th class="hidden val-details sortable clickable" data-sort="number">Tech & Eng.</th>
-                      <th class="sortable clickable test-overall" data-sort="number">Overall</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">Art & Design</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">Business</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">Science</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">Health & Medicine</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">Human. & Social Sci.</th>
-                      <th class="hidden test-details sortable clickable" data-sort="number">Tech & Eng.</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Table body will be populated dynamically -->
-                  <!-- </tbody>
-                </table>
-                <p class="test-desc"> Overall results of different models on the MMMU leaderboard. The best-performing model in each category is <b>in-bold</b>, and the second best is <u>underlined</u>. *: results provided by the authors.</p>
-              </div> --> 
             </div>
           </div>
-        </div>
-        <!-------------------------------------------------------------------- Image Type SECTION -------------------------------------------------------------------->
-        <div class="columns is-centered m-6">
-          <div class="column is-full has-text-centered content">
-            <h2 class="title is-3">OOD Detection</h2>
-            <div class="content has-text-justified">
-              <p>
-                We delve into the analysis of errors by GPT-4V, a pivotal aspect for understanding its operational capabilities and limitations.
-                This analysis serves not only to identify the model's current shortcomings but also to guide future enhancements in its design and training.
-                We meticulously examine 150 randomly sampled error instances from GPT-4V's predictions.
-                These instances are analyzed by expert annotators who identify the root causes of mispredictions based on their knowledge and the golden explanations if available.
-                The distribution of these errors is illustrated in Figure, and a selection of 100 notable cases, along with detailed analyses, is included in the Appendix.
-              </p>
-            </div>            
-            <div class="content has-text-centered">
-              <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-                <caption><strong>Results for out of distribution source detection.</strong> The best results are highlighted in bold, and the second-best results are underlined. The <code>Chronos-Bolt-tiny</code> performs very well on this task, ranking first across all metrics with hand-crafted features being a distant second.</caption>
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th colspan="3" class="has-text-centered"><strong>Purity</strong></th>
-                  </tr>
-                  <tr>
-                    <th><strong></strong></th>
-                    <th><strong>Top 1 percentile</strong></th>
-                    <th><strong>Top 5 percentile</strong></th>
-                    <th><strong>Top 10 percentile</strong></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a href="static/model_card/astromer-1/index.html"><code>Astromer-1</code></a></td>
-                    <td>0.014 (0.020)</td>
-                    <td>0.087 (0.018)</td>
-                    <td>0.121 (0.001)</td>
-                  </tr>
-                  <tr>
-                    <td><a href="static/model_card/astromer-2/index.html"><code>Astromer-2</code></a></td>
-                    <td>0.139 (0.019)</td>
-                    <td>0.124 (0.001)</td>
-                    <td>0.119 (0.001)</td>
-                  </tr>
-                  <tr>
-                    <td><a href="static/model_card/moirai-small/index.html"><code>Moirai-small</code></a></td>
-                    <td>0.172 (0.023)</td>
-                    <td>0.143 (0.003)</td>
-                    <td>0.152 (0.002)</td>
-                  </tr>
-                  <tr>
-                    <td><a href="static/model_card/chronos/index.html"><code>Chronos-tiny</code></a></td>
-                    <td>0.165 (0.005)</td>
-                    <td>0.129 (0.017)</td>
-                    <td>0.158 (0.021)</td>
-                  </tr>
-                  <tr>
-                    <td><a href="static/model_card/chronos-bolt-tiny/index.html"><code>Chronos-Bolt-tiny</code></a></td>
-                    <td><strong>0.569 (0.037)</strong></td>
-                    <td><strong>0.536 (0.053)</strong></td>
-                    <td><strong>0.528 (0.050)</strong></td>
-                  </tr>
-                  <tr>
-                    <td><a href="static/model_card/random-embeddings/index.html">Random Embeddings</a></td>
-                    <td>0.116</td>
-                    <td>0.116</td>
-                    <td>0.116</td>
-                  </tr>
-                  <tr>
-                    <td><a href="static/model_card/hand-crafted-features/index.html">Hand-crafted features</a></td>
-                    <td><u>0.213(0.009)</u></td>
-                    <td><u>0.280(0.006)</u></td>
-                    <td><u>0.260(0.002)</u></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            </div>
-          </div>
-        <div class="columns is-centered m-6">
         </div>
       </div>
     </section>
+    <hr style="margin-top: 1em; margin-bottom: 1em; width: 60%; margin-left: auto; margin-right: auto;">
 
-    <!-- @PAN TODO: bibtex -->
+
     <section class="section" id="BibTeX">
-      <div class="container is-max-desktop content">
+      <div class="container is-max-desktop content" style="max-width: 800px; margin: 0 auto;">
         <h2 class="title is-3 has-text-centered">BibTeX</h2>
-        <pre><code>
+        <div style="position: relative;">
+          <button id="copyBibtexBtn" style="position: absolute; top: 10px; right: 10px; background: #908e94; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; z-index: 10;" onmouseover="this.style.background='#3a1f5f'" onmouseout="this.style.background='#4E2A84'" onclick="copyBibtex()">
+            <i class="fas fa-copy"></i> Copy
+          </button>
+          <pre><code id="bibtexCode">
           @inproceedings{yue2023mmmu,
             title={MMMU: A Massive Multi-discipline Multimodal Understanding and Reasoning Benchmark for Expert AGI},
             author={Xiang Yue and Yuansheng Ni and Kai Zhang and Tianyu Zheng and Ruoqi Liu and Ge Zhang and Samuel Stevens and Dongfu Jiang and Weiming Ren and Yuxuan Sun and Cong Wei and Botao Yu and Ruibin Yuan and Renliang Sun and Ming Yin and Boyuan Zheng and Zhenzhu Yang and Yibo Liu and Wenhao Huang and Huan Sun and Yu Su and Wenhu Chen},
@@ -872,8 +236,26 @@
             year={2024},
           }
     </code></pre>
+        </div>
       </div>
     </section>
+    <!-- Sponsors Section -->
+    <footer style="background-color: #ffffff; margin-top: 3rem;">
+      <div class="container pb-7">
+        <hr class="mt-auto mb-7" />
+        <div class="d-md-flex align-items-center justify-content-between">
+          <p class="mb-2 mb-lg-0" style="">
+        This project is supported by the
+        <a href="https://skai-institute.org/">SkAI Institute</a>,
+        <a href="https://genai.northwestern.edu/index.html">CMFG</a>
+        , and
+        <a href="https://ciera.northwestern.edu/">CIERA
+        </a>
+        at Northwestern University.
+          </p>
+        </div>
+      </div>
+    </footer>
 
     <footer class="footer">
       <div class="columns is-centered">
@@ -888,6 +270,45 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      function copyBibtex() {
+        const bibtexCode = document.getElementById('bibtexCode').textContent;
+        const copyBtn = document.getElementById('copyBibtexBtn');
+        
+        navigator.clipboard.writeText(bibtexCode).then(function() {
+          // Change button text temporarily to show success
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          copyBtn.style.background = '#28a745';
+          
+          // Reset button after 2 seconds
+          setTimeout(function() {
+            copyBtn.innerHTML = originalText;
+            copyBtn.style.background = '#4E2A84';
+          }, 2000);
+        }).catch(function(err) {
+          console.error('Failed to copy: ', err);
+          // Fallback for older browsers
+          const textArea = document.createElement('textarea');
+          textArea.value = bibtexCode;
+          document.body.appendChild(textArea);
+          textArea.select();
+          document.execCommand('copy');
+          document.body.removeChild(textArea);
+          
+          // Show success message
+          const originalText = copyBtn.innerHTML;
+          copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          copyBtn.style.background = '#28a745';
+          
+          setTimeout(function() {
+            copyBtn.innerHTML = originalText;
+            copyBtn.style.background = '#4E2A84';
+          }, 2000);
+        });
+      }
+    </script>
 
   </body>
 </html>

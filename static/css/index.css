@@ -1,5 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;600;700&display=swap');
+
 body {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* Stanford CRFM-style Navigation */
+.wrapper {
+  position: relative;
+}
+
+.wrapper.bg-light {
+  background-color: #ffffff !important;
+}
+
+.navbar {
+  padding: 0.5rem 0;
+  background-color: #ffffff !important;
+}
+
+.navbar-light {
+  background-color: #ffffff !important;
+  border-bottom: none;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-nav {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 2rem;
+}
+
+.nav-link {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.125rem;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #53A8C7;
+}
+
+/* Flexbox utilities */
+.flex-lg-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.flex-row {
+  flex-direction: row !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.ms-auto {
+  margin-left: auto !important;
+}
+
+/* Bootstrap-like utilities */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.py-lg-8 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.gx-lg-8 {
+  --bs-gutter-x: 3rem;
+}
+
+.gx-xl-12 {
+  --bs-gutter-x: 4rem;
+}
+
+.py-md-4 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Typography */
+.lead {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.fs-lg {
+  font-size: 1.375rem;
+}
+
+.display-7 {
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.fs-16 {
+  font-size: 1.125rem;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-line {
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 0.5rem;
+}
+
+.text-primary {
+  color: #0066cc;
+}
+
+.mb-3 {
+  margin-bottom: 1rem;
+}
+
+.mt-8 {
+  margin-top: 3rem;
+}
+
+.pt-10 {
+  padding-top: 3rem;
+}
+
+/* Footer */
+.bg-light {
+  background-color: #ffffff !important;
+}
+
+.pb-7 {
+  padding-bottom: 3rem;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-7 {
+  margin-bottom: 3rem;
+}
+
+.d-md-flex {
+  display: flex;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.mb-lg-0 {
+  margin-bottom: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+  }
+  
+  .nav-item {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
 }
 
 /* Table column group background colors for StarEmbed tables */

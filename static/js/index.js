@@ -75,7 +75,7 @@ function loadTableData() {
 
       return `
         <tr class="${model.info.type}">
-          <td>${nameCell}</td>
+          <td style="text-align: left;">${nameCell}</td>
           <td>${model.info.size || '-'}</td>
           <td>${model.info.date || '-'}</td>
           <td>${applyStyle(model.clustering.kmeans.nmi, clusteringScores.kmeans_nmi[index])}</td>
@@ -101,7 +101,7 @@ function loadTableData() {
 
       return `
         <tr class="${model.info.type}">
-          <td>${nameCell}</td>
+          <td style="text-align: left;">${nameCell}</td>
           <td>${model.info.size || '-'}</td>
           <td>${model.info.date || '-'}</td>
           <td>${applyStyle(model.classification.mlp.accuracy, classificationScores.mlp_accuracy[index])}</td>

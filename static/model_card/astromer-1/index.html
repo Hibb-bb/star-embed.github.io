@@ -354,22 +354,21 @@
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="model-title">Astromer-1</h1>
-          <p class="model-subtitle">Transformer-based Astronomical Time Series Model</p>
-          <span class="model-tag">Published 2023</span>
+          <span class="model-tag">A&A 2023</span>
         </div>
       </div>
 
       <!-- Quick Stats Grid -->
-      <div class="stats-grid">
+      <!-- <div class="stats-grid">
         <div class="stat-card">
           <div class="stat-icon architecture">
             <i class="fas fa-cogs"></i>
           </div>
           <h3 class="stat-title">Architecture</h3>
           <p class="stat-description">Transformer with attention mechanisms for astronomical time series</p>
-        </div>
+        </div> -->
 
-        <div class="stat-card">
+        <!-- <div class="stat-card">
           <div class="stat-icon paper">
             <i class="fas fa-file-alt"></i>
           </div>
@@ -392,7 +391,7 @@
           <h3 class="stat-title">Hugging Face</h3>
           <p class="stat-description">Pre-trained models ready for inference</p>
         </div>
-      </div>
+      </div> -->
 
       <!-- Action Buttons -->
       <div class="action-buttons">
@@ -405,11 +404,11 @@
           GitHub Repository
         </a>
         <a href="https://www.stellardnn.org/projects/astromer/index.html" target="_blank" class="btn btn-secondary">
-          <i class="fas fa-download"></i>
-          Hugging Face Model
+          <i class="fas fa-external-link-alt"></i>
+          Project Page
         </a>
       </div>
-
+      <br>
       <!-- Content Grid -->
       <div class="content-grid">
         <!-- Main Content -->
@@ -420,25 +419,20 @@
             </div>
             Model Overview
           </h2>
-          <p>Astromer-1 is a transformer-based model specifically designed for astronomical time series analysis. It leverages attention mechanisms to capture long-range dependencies in irregularly sampled light curves and handles the unique challenges of astronomical data.</p>
+          <p>Astromer-1 is a transformer-based model specifically designed for astronomical time series embeddings. 
+            It is pretrained in a self-supervised manner on a large corpus of astronomical time series data (MACHO).
+            It leverages attention mechanisms to capture long-range dependencies in irregularly sampled light curves and handles the unique challenges of astronomical data.
+          </p>
           
           <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-primary);">Key Features</h3>
           <ul style="list-style: none; padding: 0;">
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Handles Irregular Sampling:</strong> Designed for astronomical light curves with missing observations
+              <strong>Handles Irregular Sampling:</strong> Designed for astronomical light curves with missing observations/seasonal gaps
             </li>
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Attention Mechanisms:</strong> Captures long-range dependencies in time series
-            </li>
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
-              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Domain Specialization:</strong> Optimized for astronomical time series patterns
-            </li>
-            <li style="padding: 0.5rem 0;">
-              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Robust Performance:</strong> Handles noise and missing data gracefully
+              <strong>Domain Specialization:</strong> Designed for light-curve embeddings
             </li>
           </ul>
         </div>
@@ -449,7 +443,7 @@
             <div class="card-icon">
               <i class="fas fa-cogs"></i>
             </div>
-            Technical Details
+            <span style="font-size: 1.2rem; font-weight: bold;">Technical Details</span>
           </h2>
           <ul class="architecture-list">
             <li>
@@ -458,24 +452,20 @@
             </li>
             <li>
               <span class="architecture-label">Input Type</span>
-              <span class="architecture-value">Light Curves</span>
+              <span class="architecture-value">Multivariate</span>
             </li>
             <li>
               <span class="architecture-label">Output</span>
-              <span class="architecture-value">Embeddings</span>
+              <span class="architecture-value">Point Prediction</span>
             </li>
             <li>
               <span class="architecture-label">Domain</span>
-              <span class="architecture-value">Astronomy</span>
+              <span class="architecture-value">Light curve</span>
             </li>
-            <li>
+            <!-- <li>
               <span class="architecture-label">Sampling</span>
               <span class="architecture-value">Irregular</span>
-            </li>
-            <li>
-              <span class="architecture-label">Framework</span>
-              <span class="architecture-value">PyTorch</span>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>

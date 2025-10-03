@@ -354,62 +354,26 @@
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="model-title">Astromer-2</h1>
-          <p class="model-subtitle">Enhanced Transformer-based Astronomical Time Series Model</p>
-          <span class="model-tag">Published 2023</span>
-        </div>
-      </div>
-
-      <!-- Quick Stats Grid -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon architecture">
-            <i class="fas fa-cogs"></i>
-          </div>
-          <h3 class="stat-title">Architecture</h3>
-          <p class="stat-description">Enhanced transformer with improved attention mechanisms</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon paper">
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <h3 class="stat-title">Research Paper</h3>
-          <p class="stat-description">Published with comprehensive evaluation and benchmarks</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon github">
-            <i class="fab fa-github"></i>
-          </div>
-          <h3 class="stat-title">Open Source</h3>
-          <p class="stat-description">Full implementation available on GitHub</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon huggingface">
-            <i class="fas fa-robot"></i>
-          </div>
-          <h3 class="stat-title">Hugging Face</h3>
-          <p class="stat-description">Pre-trained models ready for inference</p>
+          <span class="model-tag">2025</span>
         </div>
       </div>
 
       <!-- Action Buttons -->
       <div class="action-buttons">
-        <a href="https://arxiv.org/abs/2205.01677" target="_blank" class="btn btn-primary">
-          <i class="fas fa-external-link-alt"></i>
-          View Paper
-        </a>
+                <a href="https://arxiv.org/pdf/2502.02717" target="_blank" class="btn btn-primary">
+                  <i class="fas fa-external-link-alt"></i>
+                  View Paper
+                </a>
         <a href="https://github.com/astromer-science/main-code" target="_blank" class="btn btn-secondary">
           <i class="fab fa-github"></i>
           GitHub Repository
         </a>
         <a href="https://www.stellardnn.org/projects/astromer/index.html" target="_blank" class="btn btn-secondary">
-          <i class="fas fa-download"></i>
-          Hugging Face Model
+          <i class="fas fa-external-link-alt"></i>
+          Project Page
         </a>
       </div>
-
+      <br>
       <!-- Content Grid -->
       <div class="content-grid">
         <!-- Main Content -->
@@ -420,25 +384,25 @@
             </div>
             Model Overview
           </h2>
-          <p>Astromer-2 is an enhanced version of the transformer-based model specifically designed for astronomical time series analysis. Building upon Astromer-1, it features improved attention mechanisms and better handling of irregular sampling patterns.</p>
+          <p>Astromer-2 is an enhanced version of the transformer-based model specifically designed for astronomical time series analysis. 
+            It is pretrained in a self-supervised manner with novel Uncertainty-weighted loss.
+            Instead of generating embeddings using the final encoder layer, it uses weighted aggregation of intermediate attention block outputs.
+            Astromer-2 shows superior performance over Astromer-1 in downstream tasks.
+          </p>
           
           <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-primary);">Key Improvements</h3>
           <ul style="list-style: none; padding: 0;">
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Enhanced Architecture:</strong> Improved transformer design with better attention patterns
-            </li>
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
-              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Better Performance:</strong> Superior handling of irregular sampling and missing data
-            </li>
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
-              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Optimized Training:</strong> More efficient training procedures and convergence
+              <strong>Novel Pretraining:</strong> Pretrained on time series reconstruction task with uncertainty-weighted loss
             </li>
             <li style="padding: 0.5rem 0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
-              <strong>Robust Embeddings:</strong> Higher quality embeddings for downstream tasks
+              <strong>Irregular Sample Modeling:</strong> Uses adapted positional encoder to capture the observation time information on irregular sampling
+            </li>
+            <li style="padding: 0.5rem 0;">
+              <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
+              <strong>Layer-mixing Embeddings:</strong> Helps the model flexibly incorporate features at different abstraction levels
             </li>
           </ul>
         </div>
@@ -449,16 +413,16 @@
             <div class="card-icon">
               <i class="fas fa-cogs"></i>
             </div>
-            Technical Details
+            <span style="font-size: 1.2rem;">Technical Details</span>
           </h2>
           <ul class="architecture-list">
             <li>
               <span class="architecture-label">Architecture</span>
-              <span class="architecture-value">Enhanced Transformer</span>
+              <span class="architecture-value">Transformer</span>
             </li>
             <li>
               <span class="architecture-label">Input Type</span>
-              <span class="architecture-value">Light Curves</span>
+              <span class="architecture-value">Multi-variate</span>
             </li>
             <li>
               <span class="architecture-label">Output</span>
@@ -466,15 +430,7 @@
             </li>
             <li>
               <span class="architecture-label">Domain</span>
-              <span class="architecture-value">Astronomy</span>
-            </li>
-            <li>
-              <span class="architecture-label">Sampling</span>
-              <span class="architecture-value">Irregular</span>
-            </li>
-            <li>
-              <span class="architecture-label">Framework</span>
-              <span class="architecture-value">PyTorch</span>
+              <span class="architecture-value">Light curve</span>
             </li>
           </ul>
         </div>

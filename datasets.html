@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Light curve analysis, time series foundation model, time series evaluation, astrophysics data analysis.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Datasets - StarEmbed: Benchmarking Time Series Foundation Models on Astronomical Observations of Variable Stars</title>
+
+    <link rel="icon" href="./static/images/star_logos/milky2.jpg"> 
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <script src="https://kit.fontawesome.com/fff5b27ec1.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/header-loader.js"></script>
+</head>
+<body>
+
+    <!-- Header will be loaded here -->
+    <div id="header-container"></div>
+
+    <!-- Main Content Section -->
+    <section style="background-color: #ffffff; margin-top:1em">
+      <div class="container py-lg-8 gx-lg-8 gx-xl-12 py-md-4">
+        <div class="container">
+          <div class="content" style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 2.75em; margin-top: 3em; font-weight: 600; text-align: center;">Dataset & Statistics</h2>
+            
+            <div class="content has-text-justified">
+              <p style="font-size: 1.375rem; line-height: 1.8;">
+                The benchmark dataset includes multi-variate time-series observations of periodic variable stars. The flux is presented in magnitudes (an astronomy specific unit), while the time is recorded as the modified Julian date. 
+                The observations are from the 
+                <a href="https://ui.adsabs.harvard.edu/abs/2019PASP..131a8002B/abstract/">Zwicky Transient Facility (ZTF)</a>, 
+                which repeatedly scans all stars visible from the Northern hemisphere every few days. ZTF observes in three different passbands, g, r and i
+                roughly corresponding to visible green, visible red, and (outside the visible) infrared light, respectively. 
+                We use observations from ZTF data release 23 (DR23) which spans a duration of ~6.5 yr and contains billions of light curves. 
+                While many labels for periodic variable stars exist within the literature, the vast majority of these labels are derived from low-capacity machine learning models. 
+                A careful selection of light curves is therefore warranted to prevent significant label noise within the benchmark.  
+                We thus avoid these catalogs in establishing this benchmark.
+              </p>
+            </div>
+            
+            <div class="table-wrapper" style="margin: 2rem auto;">
+              <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: 2rem auto;">
+                <caption style="caption-side: top; text-align: center; font-weight: bold; margin-bottom: 1rem;">
+                  Number of periodic variable stars in our dataset across each class and in each split
+                </caption>
+                <thead>
+                  <tr>
+                    <th style="text-align: left;">Class</th>
+                    <th>EW</th>
+                    <th>EA</th>
+                    <th>RRab</th>
+                    <th>RRc</th>
+                    <th>RRd</th>
+                    <th>RS CVn</th>
+                    <th>LPV</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align: left;"><strong>Train</strong></td>
+                    <td>18,998</td>
+                    <td>2,889</td>
+                    <td>1,386</td>
+                    <td>3,233</td>
+                    <td>1,686</td>
+                    <td>2,912</td>
+                    <td>6,343</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Val</strong></td>
+                    <td>2,375</td>
+                    <td>361</td>
+                    <td>173</td>
+                    <td>404</td>
+                    <td>211</td>
+                    <td>364</td>
+                    <td>793</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Test</strong></td>
+                    <td>2,375</td>
+                    <td>361</td>
+                    <td>173</td>
+                    <td>404</td>
+                    <td>211</td>
+                    <td>364</td>
+                    <td>793</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><strong>Total</strong></td>
+                    <td>23,748</td>
+                    <td>3,611</td>
+                    <td>1,732</td>
+                    <td>4,041</td>
+                    <td>2,108</td>
+                    <td>3,640</td>
+                    <td>7,929</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <!-- <h2 class="title is-3">Challenges</h2>
+            <div class="content has-text-justified">
+              <p>
+                Several challenges are posted in analyzing the light-curve data, such as the massive data scale, limited labels,
+                irregular data points and various of noises.
+                Example ZTF light curves illustrating unique characteristics of astronomical time series, including multiple
+                passbands, large observational gaps, and heteroskedastic uncertainties.
+                <em>Top panel</em>: Observed light curve of a periodic variable exhibiting typical characteristics of the
+                observations.
+                The inset shows the full ~6.5 year duration of ZTF observations.
+                <em>Lower panels</em>: Phase-folded light curves highlighting the differing periodic patterns in three different
+                classes.
+                Note that most stars have few i passband observations so we exclude these data from our analysis.
+              </p>
+              <p> -->
+
+
+            <div class="content has-text-justified">
+              <h3 style="font-size: 2em; margin-top: 2em; font-weight: 600;">Challenges</h3>
+              <p style="font-size: 1.375rem; line-height: 1.8;">
+                Astronomical time series present several unique challenges that distinguish them from typical time series data.
+                In general, these light curves are noisy, irregularly sampled, and have heteroskedastic uncertainties.
+                Therefore, this dataset presents unique challenges for time series foundation models that machine learning communities seldom encounter.
+              </p>
+               <p style="text-align: center;">
+                 <img src="static/images/star-embed/challenges.jpg" alt="Challenges in analyzing light-curve data" width="80%">
+               </p>
+              <ul style="font-size: 1.25rem; line-height: 1.7;">
+                <li><strong>Irregular Sampling:</strong> Observations are taken at irregular intervals due to weather conditions, telescope scheduling, and seasonal visibility.</li>
+                <li><strong>Noise and Outliers:</strong> Atmospheric conditions, instrumental effects, and cosmic rays can introduce significant noise and outliers.</li>
+                <li><strong>Multi-band Observations:</strong> Data is collected in multiple photometric bands (g, r, i) with different noise characteristics.</li>
+                <li><strong>Long Timescales:</strong> Observations span years, requiring models to capture both short-term variability and long-term trends.</li>
+                <li><strong>Class Imbalance:</strong> Some variable star types are much more common than others, creating imbalanced datasets.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #ffffff; margin-top: 3rem;">
+      <div class="container pb-7">
+        <hr class="mt-auto mb-7" />
+        <div class="d-md-flex align-items-center justify-content-between">
+          <p class="mb-2 mb-lg-0" style="">
+            This project is supported by the
+            <a href="https://skai-institute.org/">SkAI Institute</a>,
+            <a href="https://genai.northwestern.edu/index.html">CMFG</a>
+            , and
+            <a href="https://ciera.northwestern.edu/">CIERA
+            </a>
+            at Northwestern University.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+</body>
+</html>

@@ -359,41 +359,6 @@
         </div>
       </div>
 
-      <!-- Quick Stats Grid -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon architecture">
-            <i class="fas fa-cogs"></i>
-          </div>
-          <h3 class="stat-title">Approach</h3>
-          <p class="stat-description">Random vector generation for baseline comparison</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon paper">
-            <i class="fas fa-file-alt"></i>
-          </div>
-          <h3 class="stat-title">Purpose</h3>
-          <p class="stat-description">Control baseline for model evaluation</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon github">
-            <i class="fab fa-github"></i>
-          </div>
-          <h3 class="stat-title">Implementation</h3>
-          <p class="stat-description">Simple random vector generation</p>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-icon huggingface">
-            <i class="fas fa-chart-bar"></i>
-          </div>
-          <h3 class="stat-title">Evaluation</h3>
-          <p class="stat-description">Lower bound performance baseline</p>
-        </div>
-      </div>
-
       <!-- Action Buttons -->
       <div class="action-buttons">
         <a href="../../" target="_blank" class="btn btn-primary">
@@ -409,6 +374,7 @@
           Download Data
         </a>
       </div>
+      <br>
 
       <!-- Content Grid -->
       <div class="content-grid">
@@ -420,9 +386,10 @@
             </div>
             Method Overview
           </h2>
-          <p>Random embeddings serve as a baseline control method to evaluate the effectiveness of learned representations. By generating random vectors for each light curve, we establish a lower bound for performance that helps demonstrate the value of sophisticated feature learning approaches.</p>
+          <p>Random embeddings serve as a baseline control method to evaluate the effectiveness of learned representations. 
+            By generating random vectors for each light curve, we establish a lower bound for performance that helps demonstrate the value of sophisticated feature learning approaches.</p>
           
-          <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-primary);">Baseline Characteristics</h3>
+          <!-- <h3 style="margin-top: 2rem; margin-bottom: 1rem; color: var(--text-primary);">Baseline Characteristics</h3>
           <ul style="list-style: none; padding: 0;">
             <li style="padding: 0.5rem 0; border-bottom: 1px solid #e2e8f0;">
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
@@ -440,7 +407,7 @@
               <i class="fas fa-check-circle" style="color: #48bb78; margin-right: 0.5rem;"></i>
               <strong>Evaluation Tool:</strong> Demonstrates value of learned features
             </li>
-          </ul>
+          </ul> -->
         </div>
 
         <!-- Sidebar -->
@@ -449,33 +416,17 @@
             <div class="card-icon">
               <i class="fas fa-cogs"></i>
             </div>
-            Technical Details
+            <span style="font-size: 1.2rem;">Technical Details</span>
           </h2>
           <ul class="architecture-list">
             <li>
-              <span class="architecture-label">Approach</span>
-              <span class="architecture-value">Random Generation</span>
+              <span class="architecture-label">Distribution</span>
+              <span class="architecture-value">Uniform</span>
             </li>
-            <li>
+            <!-- <li>
               <span class="architecture-label">Input Type</span>
               <span class="architecture-value">Light Curves</span>
-            </li>
-            <li>
-              <span class="architecture-label">Output</span>
-              <span class="architecture-value">Random Vectors</span>
-            </li>
-            <li>
-              <span class="architecture-label">Domain</span>
-              <span class="architecture-value">Astronomy</span>
-            </li>
-            <li>
-              <span class="architecture-label">Method</span>
-              <span class="architecture-value">Baseline</span>
-            </li>
-            <li>
-              <span class="architecture-label">Purpose</span>
-              <span class="architecture-value">Control</span>
-            </li>
+            </li> -->
           </ul>
         </div>
       </div>

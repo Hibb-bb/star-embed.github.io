@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Light curve analysis, time series foundation model, time series evaluation, astrophysics data analysis.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OOD Detection - StarEmbed: Benchmarking Time Series Foundation Models on Astronomical Observations of Variable Stars</title>
+
+    <link rel="icon" href="./static/images/star_logos/milky2.jpg"> 
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <script src="https://kit.fontawesome.com/fff5b27ec1.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/header-loader.js"></script>
+</head>
+<body>
+
+    <!-- Header will be loaded here -->
+    <div id="header-container"></div>
+
+    <!-- Main Content Section -->
+    <section style="background-color: #ffffff; margin-top:1em">
+      <div class="container py-lg-8 gx-lg-8 gx-xl-12 py-md-4">
+        <div class="container">
+          <div class="content" style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-size: 2.75em; margin-top: 3em; font-weight: 600; text-align: center;">Out-of-Distribution Detection</h2>
+            
+            <div class="content has-text-justified">
+              <p style="font-size: 1.375rem; line-height: 1.8;">
+                Astronomers are especially interested in spotting stars that behave differently from the ones already known and labeled.
+                To test if our model's embeddings can help find such unusual stars, we focus on rare types of variable stars that
+                weren't part of the training set. We then use an algorithm (a type of outlier detector called an isolation forest) to
+                see how different these stars look compared to the common types. If a star gets a high "out-of-distribution" score, it
+                means it's more likely to be one of these unusual cases. We measure success by checking how many of the stars the method
+                flags as unusual are truly rare types.
+              </p>
+            </div>
+            
+            <div class="table-wrapper">
+              <table class="table is-bordered is-striped is-narrow is-hoverable" style="margin: 2rem auto;">
+                <caption style="caption-side: top; text-align: center; font-weight: bold; margin-bottom: 1rem;">
+                  <strong>Results for out of distribution source detection.</strong> The best results are highlighted in bold, and the second-best results are underlined. The Chronos-Bolt-tiny performs very well on this task, ranking first across all metrics with hand-crafted features being a distant second.
+                </caption>
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th colspan="3" class="has-text-centered"><strong>Purity</strong></th>
+                  </tr>
+                  <tr>
+                    <th style="text-align: left;"><strong></strong></th>
+                    <th><strong>Top 1 percentile</strong></th>
+                    <th><strong>Top 5 percentile</strong></th>
+                    <th><strong>Top 10 percentile</strong></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align: left;"><a href="static/model_card/astromer-1/index.html">Astromer-1</a></td>
+                    <td>0.014 (0.020)</td>
+                    <td>0.087 (0.018)</td>
+                    <td>0.121 (0.001)</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><a href="static/model_card/astromer-2/index.html">Astromer-2</a></td>
+                    <td>0.139 (0.019)</td>
+                    <td>0.124 (0.001)</td>
+                    <td>0.119 (0.001)</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><a href="static/model_card/moirai-small/index.html">Moirai-small</a></td>
+                    <td>0.172 (0.023)</td>
+                    <td>0.143 (0.003)</td>
+                    <td>0.152 (0.002)</td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><a href="static/model_card/chronos/index.html">Chronos</a></td>
+                    <td><strong>0.253 (0.021)</strong></td>
+                    <td><strong>0.208 (0.004)</strong></td>
+                    <td><strong>0.190 (0.003)</strong></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><a href="static/model_card/chronos-bolt-tiny/index.html">Chronos-Bolt-tiny</a></td>
+                    <td><strong>0.253 (0.021)</strong></td>
+                    <td><strong>0.208 (0.004)</strong></td>
+                    <td><strong>0.190 (0.003)</strong></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><a href="static/model_card/hand-crafted-features/index.html">Hand-crafted features</a></td>
+                    <td><u>0.213 (0.020)</u></td>
+                    <td><u>0.186 (0.004)</u></td>
+                    <td><u>0.174 (0.003)</u></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;"><a href="static/model_card/random-embeddings/index.html">Random embeddings</a></td>
+                    <td>0.018 (0.015)</td>
+                    <td>0.084 (0.017)</td>
+                    <td>0.113 (0.001)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="content has-text-justified">
+              <h3 style="font-size: 2em; margin-top: 2em; font-weight: 600;">Methodology</h3>
+              <p style="font-size: 1.375rem; line-height: 1.8;">
+                Our out-of-distribution detection approach follows these key steps:
+              </p>
+              <ul style="font-size: 1.25rem; line-height: 1.7;">
+                <li><strong>Embedding Generation:</strong> We generate embeddings for all light curves using the trained foundation models.</li>
+                <li><strong>Isolation Forest:</strong> We apply an isolation forest algorithm to identify outliers in the embedding space.</li>
+                <li><strong>Score Calculation:</strong> Each light curve receives an anomaly score based on how easily it can be isolated from the rest.</li>
+                <li><strong>Threshold Selection:</strong> We select different percentile thresholds (1%, 5%, 10%) to evaluate performance.</li>
+                <li><strong>Purity Evaluation:</strong> We measure the purity of the flagged outliers by checking how many are truly rare variable star types.</li>
+              </ul>
+            </div>
+
+            <div class="content has-text-justified">
+              <h3 style="font-size: 2em; margin-top: 2em; font-weight: 600;">Key Findings</h3>
+              <p style="font-size: 1.375rem; line-height: 1.8;">
+                The results reveal several important insights:
+              </p>
+              <ul style="font-size: 1.25rem; line-height: 1.7;">
+                <li><strong>Chronos Models Excel:</strong> Both Chronos and Chronos-Bolt-tiny achieve the best performance across all metrics.</li>
+                <li><strong>Hand-crafted Features Remain Competitive:</strong> Traditional astronomical features still perform well, ranking second.</li>
+                <li><strong>Foundation Models Show Promise:</strong> Time series foundation models demonstrate superior ability to identify unusual stellar behavior.</li>
+                <li><strong>Random Baselines Perform Poorly:</strong> Random embeddings serve as an important baseline, showing the significance of learned representations.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: #ffffff; margin-top: 3rem;">
+      <div class="container pb-7">
+        <hr class="mt-auto mb-7" />
+        <div class="d-md-flex align-items-center justify-content-between">
+          <p class="mb-2 mb-lg-0" style="">
+            StarEmbed is grateful to our <a href="#sponsors">supporters</a>.
+          </p>
+        </div>
+        <div class="d-md-flex align-items-center justify-content-between">
+          <p class="mb-2 mb-lg-0">
+            © 2024. Northwestern University StarEmbed Project.
+            <br>
+            <span style="font-size:0.92em">Supported by <a href="https://skai.ai" target="_blank" style="color:#61697A">SkAI</a>, <a href="https://ciera.northwestern.edu" target="_blank" style="color:#61697A">CIERA</a>, and <a href="https://genai.northwestern.edu" target="_blank" style="color:#61697A">CFMG</a>.</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+</body>
+</html>
