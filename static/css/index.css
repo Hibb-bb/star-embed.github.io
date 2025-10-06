@@ -23,6 +23,8 @@ body {
 .navbar {
   padding: 0.5rem 0;
   background-color: #ffffff !important;
+  width: 100%;
+  overflow: hidden;
 }
 
 .navbar-light {
@@ -33,6 +35,8 @@ body {
 .navbar-brand {
   display: flex;
   align-items: center;
+  flex: 1;
+  min-width: 0;
 }
 
 .navbar-nav {
@@ -94,6 +98,15 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+}
+
+/* Header-specific container */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .py-lg-8 {
@@ -192,6 +205,31 @@ body {
   margin-bottom: 0;
 }
 
+/* Logo container styles */
+.logo-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav_logo2 {
+  height: 60px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin-top: 3px;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .navbar-nav {
@@ -201,6 +239,42 @@ body {
   .nav-item {
     margin-right: 0;
     margin-bottom: 1rem;
+  }
+  
+  .logo-container {
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .nav_logo2 {
+    height: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-container {
+    gap: 0.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav_logo2 {
+    height: 40px;
+  }
+  
+  .header-container {
+    padding: 0 10px;
+  }
+}
+
+/* Ensure header doesn't overflow on any screen size */
+@media (max-width: 320px) {
+  .nav_logo2 {
+    height: 35px;
+  }
+  
+  .logo-container {
+    gap: 0.1rem;
   }
 }
 
