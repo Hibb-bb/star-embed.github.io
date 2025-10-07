@@ -398,6 +398,19 @@ function applyStyle(value, rank) {
     }
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Check if Chart.js is available and if there are any chart elements on the page
+    if (typeof Chart === 'undefined') {
+        console.log('Chart.js not loaded, skipping chart initialization');
+        return;
+    }
+    
+    // Check if there are any chart elements on the page
+    const hasChartElements = document.getElementById('chart_Diagrams') !== null;
+    if (!hasChartElements) {
+        console.log('No chart elements found on page, skipping chart initialization');
+        return;
+    }
+    
     // Data for the "Diagrams" chart
     const data_Diagrams = {
         labels: ['Adept Fuyu-8B', 'Qwen-VL-7B-Chat', 'InstructBLIP-T5-XXL', 'LLaVA-1.5-13B', 'BLIP-2 FLAN-T5-XXL', 'Yi-VL-34B', 'LLaVA-1.6-34B', 'InternVL-Chat-V1.2', 'VILA1.5', 'GPT-4V'],
