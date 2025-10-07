@@ -12,7 +12,12 @@
     <script>
       // Configure Embedding Atlas for GitHub Pages
       window.EMBEDDING_ATLAS_CONFIG = {
-        dataPath: '/star-embed.github.io/static/embedding_vis/data/'
+        dataPath: '/star-embed.github.io/static/embedding_vis/data/',
+        database: {
+          type: 'wasm',
+          load: false,
+          enableRangeRequests: false
+        }
       };
     </script>
     
