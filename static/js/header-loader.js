@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Load header into the header container
     // Calculate the path to header.html based on current location
     const currentPath = window.location.pathname;
-    let headerPath = '/header.html';
+    let headerPath = '/star-embed.github.io/header.html';
     
     // If we're in a subdirectory, adjust the path
     if (currentPath.includes('/static/')) {
-        headerPath = '../../header.html';
+        headerPath = '/star-embed.github.io/header.html';
     } else if (currentPath.includes('/')) {
-        headerPath = '/header.html';
+        headerPath = '/star-embed.github.io/header.html';
     }
     
     fetch(headerPath)
