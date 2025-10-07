@@ -1601,8 +1601,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
-  } else {
-    console.error('Element with id "single_vs_multiple_chart" not found.');
   }
 });
 
@@ -1739,7 +1737,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
-  } else {
-    console.error('Element with id "difficulty_level_chart" not found.');
   }
 });
